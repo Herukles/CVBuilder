@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder;
 
+import com.Herukles.CVBuilder.CV.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,5 +10,7 @@ public class CvBuilderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CvBuilderApplication.class, args);
 	}
+
+	Person person = new Person();
 
 }
