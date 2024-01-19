@@ -1,5 +1,7 @@
-package com.Herukles.CVBuilder.CV;
+package com.Herukles.CVBuilder.CV.ResumeData;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Data
 public class Person {
     private String name;
@@ -7,4 +9,5 @@ public class Person {
     private String countryOfBorn;
     private String dateOfBorn;
     private int age;
+
 }
