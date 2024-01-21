@@ -10,6 +10,7 @@ public class CVConcreteBuilder implements CVBuilder{
     private Education education;
     private Person person;
     private WorkExperience workExperience;
+    private ContactMe contactMe;
 
 
 
@@ -29,6 +30,9 @@ public class CVConcreteBuilder implements CVBuilder{
         this.workExperience = workExperience;
     }
 
+    public void setContactMe(ContactMe contactMe) {
+        this.contactMe = contactMe;
+    }
 
     @Override
     public void buildPersonal(Person person, String name, String surname, int age, LocalDate dateOfBorn, String countryOfBorn) {
@@ -63,8 +67,20 @@ public class CVConcreteBuilder implements CVBuilder{
         this.education = education;
     }
 
+    @Override
+    public void buildContactMe(ContactMe contactMe, String phoneNumber, String email, String website) {
+        contactMe.setPhoneNumber(phoneNumber);
+        contactMe.setEmail(email);
+        contactMe.setWebsite(website);
+    }
+
+
     public CV getResult() {
-        return new CV(person,aboutMe,education,workExperience);
+        return new CV(person,aboutMe,education,workExperience,contactMe);
+    }
+
+    public ContactMe getContactMe() {
+        return contactMe;
     }
 
     public AboutMe getAboutMe() {

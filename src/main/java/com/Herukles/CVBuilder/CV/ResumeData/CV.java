@@ -15,14 +15,18 @@ public class CV {
     AboutMe aboutMe;
     Education education;
     WorkExperience workExperience;
+    ContactMe contactMe;
 
     public CV() {
     }
 
-    public CV(Person person, AboutMe aboutMe, Education education, WorkExperience workExperience) {
+    public CV(Person person, AboutMe aboutMe, Education education, WorkExperience workExperience, ContactMe contactMe) {
         this.person = person;
         this.aboutMe = aboutMe;
         this.education = education;
         this.workExperience = workExperience;
+        this.contactMe = contactMe;
     }
+
+
 }
