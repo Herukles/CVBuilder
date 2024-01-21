@@ -1,9 +1,8 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
-import com.Herukles.CVBuilder.CV.ResumeData.AboutMe;
-import com.Herukles.CVBuilder.CV.ResumeData.Education;
-import com.Herukles.CVBuilder.CV.ResumeData.Person;
-import com.Herukles.CVBuilder.CV.ResumeData.WorkExperience;
+import com.Herukles.CVBuilder.CV.ResumeData.*;
+
+import java.time.LocalDate;
 
 public class CVConcreteBuilder implements CVBuilder{
 
@@ -11,6 +10,8 @@ public class CVConcreteBuilder implements CVBuilder{
     private Education education;
     private Person person;
     private WorkExperience workExperience;
+
+
 
     public void setAboutMe(AboutMe aboutMe) {
         this.aboutMe = aboutMe;
@@ -30,23 +31,55 @@ public class CVConcreteBuilder implements CVBuilder{
 
 
     @Override
-    public void buildPersonal(Person person) {
+    public void buildPersonal(Person person, String name, String surname, int age, LocalDate dateOfBorn, String countryOfBorn) {
+        person.setName(name);
+        person.setSurname(surname);
+        person.setAge(age);
+        person.setDateOfBorn(dateOfBorn);
+        person.setCountryOfBorn(countryOfBorn);
         this.person = person;
     }
 
     @Override
-    public void buildExperience(WorkExperience workExperience) {
+    public void buildExperience(WorkExperience workExperience, String name, LocalDate start, LocalDate end, String desc) {
+        workExperience.setCompanyName(name);
+        workExperience.setWorkExperienceDateStart(start);
+        workExperience.setWorkExperienceDateEnd(end);
+        workExperience.setDescription(desc);
         this.workExperience = workExperience;
     }
 
     @Override
-    public void buildAboutMe(AboutMe aboutMe) {
+    public void buildAboutMe(AboutMe aboutMe, String aboutMeDesc) {
+        aboutMe.setAboutMeString(aboutMeDesc);
         this.aboutMe = aboutMe;
     }
 
     @Override
-    public void buildEducation(Education education) {
+    public void buildEducation(Education education, String nameOfInstitution, LocalDate start, LocalDate end) {
+        education.setNameOfInstitution(nameOfInstitution);
+        education.setEducationDateStart(start);
+        education.setEducationDateEnd(end);
         this.education = education;
     }
 
+    public CV getResult() {
+        return new CV(person,aboutMe,education,workExperience);
+    }
+
+    public AboutMe getAboutMe() {
+        return aboutMe;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public WorkExperience getWorkExperience() {
+        return workExperience;
+    }
 }

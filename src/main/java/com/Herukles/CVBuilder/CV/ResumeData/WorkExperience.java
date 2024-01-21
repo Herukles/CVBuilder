@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 @Data
 public class WorkExperience {
-    LocalDate dateStart;
-    LocalDate dateEnd;
+    LocalDate WorkExperienceDateStart;
+    LocalDate WorkExperienceDateEnd;
     String companyName;
     String description;
 }
