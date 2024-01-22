@@ -34,45 +34,7 @@ public class CVConcreteBuilder implements CVBuilder{
         this.contactMe = contactMe;
     }
 
-    @Override
-    public void buildPersonal(Person person, String name, String surname, int age, LocalDate dateOfBorn, String countryOfBorn) {
-        person.setName(name);
-        person.setSurname(surname);
-        person.setAge(age);
-        person.setDateOfBorn(dateOfBorn);
-        person.setCountryOfBorn(countryOfBorn);
-        this.person = person;
-    }
 
-    @Override
-    public void buildExperience(WorkExperience workExperience, String name, LocalDate start, LocalDate end, String desc) {
-        workExperience.setCompanyName(name);
-        workExperience.setWorkExperienceDateStart(start);
-        workExperience.setWorkExperienceDateEnd(end);
-        workExperience.setDescription(desc);
-        this.workExperience = workExperience;
-    }
-
-    @Override
-    public void buildAboutMe(AboutMe aboutMe, String aboutMeDesc) {
-        aboutMe.setAboutMeString(aboutMeDesc);
-        this.aboutMe = aboutMe;
-    }
-
-    @Override
-    public void buildEducation(Education education, String nameOfInstitution, LocalDate start, LocalDate end) {
-        education.setNameOfInstitution(nameOfInstitution);
-        education.setEducationDateStart(start);
-        education.setEducationDateEnd(end);
-        this.education = education;
-    }
-
-    @Override
-    public void buildContactMe(ContactMe contactMe, String phoneNumber, String email, String website) {
-        contactMe.setPhoneNumber(phoneNumber);
-        contactMe.setEmail(email);
-        contactMe.setWebsite(website);
-    }
 
 
     public CV getResult() {
@@ -97,5 +59,31 @@ public class CVConcreteBuilder implements CVBuilder{
 
     public WorkExperience getWorkExperience() {
         return workExperience;
+    }
+
+    @Override
+    public void buildPersonal(Person person) {
+        this.person = person;
+    }
+
+    @Override
+    public void buildExperience(WorkExperience workExperience) {
+        this.workExperience = workExperience;
+    }
+
+
+    @Override
+    public void buildAboutMe(AboutMe aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    @Override
+    public void buildEducation(Education education) {
+        this.education = education;
+    }
+
+    @Override
+    public void buildContactMe(ContactMe contactMe) {
+        this.contactMe = contactMe;
     }
 }

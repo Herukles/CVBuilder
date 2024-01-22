@@ -8,6 +8,6 @@ import java.time.LocalDate;
 public class AboutMe {
     String  aboutMeString;
     String degree;
-    LocalDate dateStart;
-    LocalDate dateEnd;
+//    LocalDate dateStart;
+//    LocalDate dateEnd;
 }
