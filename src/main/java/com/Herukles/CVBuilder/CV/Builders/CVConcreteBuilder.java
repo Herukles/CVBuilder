@@ -1,15 +1,24 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
 import com.Herukles.CVBuilder.CV.ResumeData.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Component
 public class CVConcreteBuilder implements CVBuilder{
 
+    @Autowired
     private AboutMe aboutMe;
+    @Autowired
     private Education education;
+    @Autowired
     private Person person;
+    @Autowired
     private WorkExperience workExperience;
+    @Autowired
     private ContactMe contactMe;
 
 

@@ -1,10 +1,28 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
 import com.Herukles.CVBuilder.CV.ResumeData.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CVDirector {
     int howManyEducationFields;
     int howManyExperienceFields;
+
+    @Autowired
+    private Person person;
+
+    @Autowired
+    private AboutMe aboutMe;
+
+    @Autowired
+    private Education education;
+
+    @Autowired
+    private WorkExperience workExperience;
+
+    @Autowired
+    private ContactMe contactMe;
 
     public CVDirector() {
         this.howManyEducationFields = 1;
@@ -17,15 +35,15 @@ public class CVDirector {
     }
 
     public void constructCV(CVConcreteBuilder cvConcreteBuilder) {
-      cvConcreteBuilder.buildPersonal(new Person());
-      cvConcreteBuilder.buildAboutMe(new AboutMe());
+        cvConcreteBuilder.buildPersonal(person);
+        cvConcreteBuilder.buildAboutMe(aboutMe);
 
-      for(int i = 0; i < howManyEducationFields;i++) {
-          cvConcreteBuilder.buildEducation(new Education());
-      }
-      for(int i = 0; i < howManyExperienceFields;i++) {
-          cvConcreteBuilder.buildExperience(new WorkExperience());
-      }
-      cvConcreteBuilder.buildContactMe(new ContactMe());
+        for(int i = 0; i < howManyEducationFields;i++) {
+            cvConcreteBuilder.buildEducation(education);
+        }
+        for(int i = 0; i < howManyExperienceFields;i++) {
+            cvConcreteBuilder.buildExperience(workExperience);
+        }
+        cvConcreteBuilder.buildContactMe(contactMe);
     }
 }

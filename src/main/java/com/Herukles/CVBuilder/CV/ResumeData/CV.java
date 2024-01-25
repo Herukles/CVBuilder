@@ -4,19 +4,33 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 @Setter
 @Getter
 @ToString
+@Component
+@Scope("prototype")
 @Data
 public class CV {
 
+    @Autowired
     Person person;
+
+    @Autowired
     AboutMe aboutMe;
+
+    @Autowired
     Education education;
+
+    @Autowired
     WorkExperience workExperience;
+
+    @Autowired
     ContactMe contactMe;
 
     public CV() {

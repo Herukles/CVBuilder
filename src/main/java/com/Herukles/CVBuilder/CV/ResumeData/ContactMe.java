@@ -1,8 +1,10 @@
 package com.Herukles.CVBuilder.CV.ResumeData;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
+@Component
 public class ContactMe {
     private String phoneNumber;
     private String email;
