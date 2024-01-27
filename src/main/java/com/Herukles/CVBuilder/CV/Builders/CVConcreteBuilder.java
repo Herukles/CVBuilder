@@ -1,13 +1,17 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
 import com.Herukles.CVBuilder.CV.ResumeData.*;
+
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
+@Data
 public class CVConcreteBuilder implements CVBuilder{
 
     @Autowired

@@ -5,17 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
+
 import org.springframework.context.annotation.Scope;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 @Setter
 @Getter
 @ToString
-@Component
 @Scope("prototype")
 @Data
+@Component
 public class CV {
 
     @Autowired

@@ -2,21 +2,21 @@ package com.Herukles.CVBuilder.CV.ResumeData;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
+
 
 @Component
 public class CVInsertValues {
-//
-//    @Autowired
-    final private CV cv;
+    @Autowired
+    private CV cv;
+
 
     @Autowired
     public CVInsertValues(CV cv) {
         this.cv = cv;
     }
 
-    public Person insertPersonValues(Person person, String name, String surname, int age, LocalDate dateOfBorn, String country) {
+    public void insertPersonValues(Person person, String name, String surname, int age, LocalDate dateOfBorn, String country) {
         if(person != null) {
             person.setName(name);
             person.setAge(age);
@@ -24,7 +24,6 @@ public class CVInsertValues {
             person.setDateOfBorn(dateOfBorn);
             person.setSurname(surname);
         }
-        return person;
     }
 
     public void insertAboutMeValues(AboutMe aboutMe, String aboutMeString, String degree) {

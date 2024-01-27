@@ -4,11 +4,9 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-@Component
 @Data
+@Component
 public class AboutMe {
     String  aboutMeString;
     String degree;
-//    LocalDate dateStart;
-//    LocalDate dateEnd;
 }
