@@ -1,5 +1,7 @@
 package com.Herukles.CVBuilder.CV.ResumeData;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +19,11 @@ import java.time.LocalDate;
 @Scope("prototype")
 @Data
 @Component
+
+@Entity
 public class CV {
+    @Id
+    private long id;
 
     @Autowired
     Person person;
