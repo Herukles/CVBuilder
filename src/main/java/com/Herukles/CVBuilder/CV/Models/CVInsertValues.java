@@ -1,4 +1,4 @@
-package com.Herukles.CVBuilder.CV.ResumeData;
+package com.Herukles.CVBuilder.CV.Models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Component
 public class CVInsertValues {
     @Autowired
-    private CV cv;
+    private final CV cv;
 
 
     @Autowired
@@ -47,6 +47,14 @@ public class CVInsertValues {
             education.setNameOfInstitution(institution);
             education.setEducationDateStart(dateStart);
             education.setEducationDateEnd(dateEnd);
+        }
+    }
+
+    public void insertContactMeValues(ContactMe contactMe, String phoneNumber, String email, String website) {
+        if(contactMe != null) {
+            contactMe.setEmail(email);
+            contactMe.setWebsite(website);
+            contactMe.setPhoneNumber(phoneNumber);
         }
     }
 }

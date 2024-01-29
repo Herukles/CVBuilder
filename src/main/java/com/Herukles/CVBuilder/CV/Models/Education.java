@@ -1,10 +1,9 @@
-package com.Herukles.CVBuilder.CV.ResumeData;
+package com.Herukles.CVBuilder.CV.Models;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Component

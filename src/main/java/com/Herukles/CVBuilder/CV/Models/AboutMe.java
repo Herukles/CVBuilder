@@ -1,7 +1,6 @@
-package com.Herukles.CVBuilder.CV.ResumeData;
+package com.Herukles.CVBuilder.CV.Models;
 
 import lombok.Data;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Data

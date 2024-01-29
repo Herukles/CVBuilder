@@ -1,9 +1,9 @@
 package com.Herukles.CVBuilder.CV;
 
-import com.Herukles.CVBuilder.CV.ResumeData.AboutMe;
-import com.Herukles.CVBuilder.CV.ResumeData.Education;
-import com.Herukles.CVBuilder.CV.ResumeData.Person;
-import com.Herukles.CVBuilder.CV.ResumeData.WorkExperience;
+import com.Herukles.CVBuilder.CV.Models.AboutMe;
+import com.Herukles.CVBuilder.CV.Models.Education;
+import com.Herukles.CVBuilder.CV.Models.Person;
+import com.Herukles.CVBuilder.CV.Models.WorkExperience;
 
 public class ResumeForm {
     Person person;

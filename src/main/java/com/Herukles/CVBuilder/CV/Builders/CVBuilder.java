@@ -1,8 +1,6 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
-import com.Herukles.CVBuilder.CV.ResumeData.*;
-
-import java.time.LocalDate;
+import com.Herukles.CVBuilder.CV.Models.*;
 
 public interface CVBuilder {
     public void buildPersonal(Person person);
