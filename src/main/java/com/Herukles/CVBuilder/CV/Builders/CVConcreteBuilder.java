@@ -36,7 +36,7 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildExperienceList(WorkExperience workExperience) {
+    public void buildExperienceList() {
         this.workExperienceList = new ArrayList<>();
     }
 
@@ -47,7 +47,7 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildEducationList(Education education) {
+    public void buildEducationList() {
         this.educationList = new ArrayList<>();
     }
 

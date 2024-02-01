@@ -14,8 +14,6 @@ import java.util.List;
 @Scope("prototype")
 @Data
 @Component
-
-
 public class CV {
 
 
@@ -38,7 +36,7 @@ public class CV {
     }
 
     public CV(Person person, AboutMe aboutMe, List<Education> education, List<WorkExperience> workExperience, ContactMe contactMe) {
-        this.person = peprivate rson;
+        this.person = person;
         this.aboutMe = aboutMe;
         this.educationList = education;
         this.workExperienceList = workExperience;
