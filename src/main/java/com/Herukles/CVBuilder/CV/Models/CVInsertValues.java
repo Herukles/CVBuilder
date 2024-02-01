@@ -16,8 +16,9 @@ public class CVInsertValues {
         this.cv = cv;
     }
 
-    public void insertPersonValues(Person person, String name, String surname, int age, LocalDate dateOfBorn, String country) {
-        if(person != null) {
+    public void insertPersonValues(String name, String surname, int age, LocalDate dateOfBorn, String country) {
+        if(cv.getPerson() != null) {
+            
             person.setName(name);
             person.setAge(age);
             person.setCountryOfBorn(country);

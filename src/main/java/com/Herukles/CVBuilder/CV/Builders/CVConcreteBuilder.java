@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Data
 public class CVConcreteBuilder implements CVBuilder{
@@ -14,61 +17,17 @@ public class CVConcreteBuilder implements CVBuilder{
     @Autowired
     private AboutMe aboutMe;
     @Autowired
-    private Education education;
+    private List<Education> educationList;
     @Autowired
     private Person person;
     @Autowired
-    private WorkExperience workExperience;
+    private List<WorkExperience> workExperienceList;
     @Autowired
     private ContactMe contactMe;
 
 
-
-    public void setAboutMe(AboutMe aboutMe) {
-        this.aboutMe = aboutMe;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public void setWorkExperience(WorkExperience workExperience) {
-        this.workExperience = workExperience;
-    }
-
-    public void setContactMe(ContactMe contactMe) {
-        this.contactMe = contactMe;
-    }
-
-
-
-
     public CV getResult() {
-        return new CV(person,aboutMe,education,workExperience,contactMe);
-    }
-
-    public ContactMe getContactMe() {
-        return contactMe;
-    }
-
-    public AboutMe getAboutMe() {
-        return aboutMe;
-    }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public WorkExperience getWorkExperience() {
-        return workExperience;
+        return new CV(person,aboutMe, educationList, workExperienceList, contactMe);
     }
 
     @Override
@@ -77,8 +36,8 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildExperience(WorkExperience workExperience) {
-        this.workExperience = workExperience;
+    public void buildExperienceList(WorkExperience workExperience) {
+        this.workExperienceList = new ArrayList<>();
     }
 
 
@@ -88,8 +47,18 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildEducation(Education education) {
-        this.education = education;
+    public void buildEducationList(Education education) {
+        this.educationList = new ArrayList<>();
+    }
+
+    @Override
+    public void addExperienceFieldToList(WorkExperience workExperience) {
+        this.workExperienceList.add(workExperience);
+    }
+
+    @Override
+    public void addEducationFieldToList(Education education) {
+        this.educationList.add(education);
     }
 
     @Override

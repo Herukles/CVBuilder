@@ -39,10 +39,10 @@ public class CVDirector {
         cvConcreteBuilder.buildAboutMe(aboutMe);
 
         for(int i = 0; i < howManyEducationFields;i++) {
-            cvConcreteBuilder.buildEducation(education);
+            cvConcreteBuilder.buildEducationList(education);
         }
         for(int i = 0; i < howManyExperienceFields;i++) {
-            cvConcreteBuilder.buildExperience(workExperience);
+            cvConcreteBuilder.buildExperienceList(workExperience);
         }
         cvConcreteBuilder.buildContactMe(contactMe);
     }

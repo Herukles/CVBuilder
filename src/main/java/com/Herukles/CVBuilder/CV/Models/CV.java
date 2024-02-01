@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Scope;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @ToString
 @Scope("prototype")
 @Data
@@ -18,28 +20,28 @@ public class CV {
 
 
     @Autowired
-    Person person;
+    private Person person;
 
     @Autowired
-    AboutMe aboutMe;
+    private AboutMe aboutMe;
 
     @Autowired
-    Education education;
+    private List<Education> educationList;
 
     @Autowired
-    WorkExperience workExperience;
+    private List<WorkExperience> workExperienceList;
 
     @Autowired
-    ContactMe contactMe;
+    private ContactMe contactMe;
 
     public CV() {
     }
 
-    public CV(Person person, AboutMe aboutMe, Education education, WorkExperience workExperience, ContactMe contactMe) {
-        this.person = person;
+    public CV(Person person, AboutMe aboutMe, List<Education> education, List<WorkExperience> workExperience, ContactMe contactMe) {
+        this.person = peprivate rson;
         this.aboutMe = aboutMe;
-        this.education = education;
-        this.workExperience = workExperience;
+        this.educationList = education;
+        this.workExperienceList = workExperience;
         this.contactMe = contactMe;
     }
 
