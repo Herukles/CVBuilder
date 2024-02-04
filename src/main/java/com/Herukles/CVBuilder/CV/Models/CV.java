@@ -18,26 +18,22 @@ public class CV {
 
 
     @Autowired
-    private Person person;
-
-    @Autowired
-    private AboutMe aboutMe;
+    private PersonalInformationEntity person;
 
     @Autowired
     private List<Education> educationList;
 
     @Autowired
-    private List<WorkExperience> workExperienceList;
+    private List<Experience> workExperienceList;
 
     @Autowired
-    private ContactMe contactMe;
+    private ContactInfo contactMe;
 
     public CV() {
     }
 
-    public CV(Person person, AboutMe aboutMe, List<Education> education, List<WorkExperience> workExperience, ContactMe contactMe) {
+    public CV(PersonalInformationEntity person, List<Education> education, List<Experience> workExperience, ContactInfo contactMe) {
         this.person = person;
-        this.aboutMe = aboutMe;
         this.educationList = education;
         this.workExperienceList = workExperience;
         this.contactMe = contactMe;

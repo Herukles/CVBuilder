@@ -15,23 +15,21 @@ import java.util.List;
 public class CVConcreteBuilder implements CVBuilder{
 
     @Autowired
-    private AboutMe aboutMe;
-    @Autowired
     private List<Education> educationList;
     @Autowired
-    private Person person;
+    private PersonalInformationEntity person;
     @Autowired
-    private List<WorkExperience> workExperienceList;
+    private List<Experience> workExperienceList;
     @Autowired
-    private ContactMe contactMe;
+    private ContactInfo contactMe;
 
 
     public CV getResult() {
-        return new CV(person,aboutMe, educationList, workExperienceList, contactMe);
+        return new CV(person, educationList, workExperienceList, contactMe);
     }
 
     @Override
-    public void buildPersonal(Person person) {
+    public void buildPersonal(PersonalInformationEntity person) {
         this.person = person;
     }
 
@@ -42,17 +40,12 @@ public class CVConcreteBuilder implements CVBuilder{
 
 
     @Override
-    public void buildAboutMe(AboutMe aboutMe) {
-        this.aboutMe = aboutMe;
-    }
-
-    @Override
     public void buildEducationList() {
         this.educationList = new ArrayList<>();
     }
 
     @Override
-    public void addExperienceFieldToList(WorkExperience workExperience) {
+    public void addExperienceFieldToList(Experience workExperience) {
         this.workExperienceList.add(workExperience);
     }
 
@@ -62,7 +55,7 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildContactMe(ContactMe contactMe) {
+    public void buildContactMe(ContactInfo contactMe) {
         this.contactMe = contactMe;
     }
 }

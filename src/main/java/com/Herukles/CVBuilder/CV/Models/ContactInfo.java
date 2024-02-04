@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class ContactMe {
+public class ContactInfo {
     private String phoneNumber;
     private String email;
     private String website;

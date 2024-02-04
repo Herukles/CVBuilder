@@ -12,19 +12,16 @@ public class CVDirector {
     int howManyExperienceFields;
 
     @Autowired
-    private Person person;
-
-    @Autowired
-    private AboutMe aboutMe;
+    private PersonalInformationEntity person;
 
     @Autowired
     private List<Education> education;
 
     @Autowired
-    private List<WorkExperience> workExperience;
+    private List<Experience> workExperience;
 
     @Autowired
-    private ContactMe contactMe;
+    private ContactInfo contactMe;
 
     public CVDirector() {
         this.howManyEducationFields = 1;
@@ -46,14 +43,13 @@ public class CVDirector {
 
     public void constructCV(CVConcreteBuilder cvConcreteBuilder) {
         cvConcreteBuilder.buildPersonal(person);
-        cvConcreteBuilder.buildAboutMe(aboutMe);
         cvConcreteBuilder.buildEducationList();
         cvConcreteBuilder.buildExperienceList();
         for(int i = 0; i < howManyEducationFields;i++) {
             cvConcreteBuilder.addEducationFieldToList(new Education());
         }
         for(int i = 0; i < howManyExperienceFields;i++) {
-            cvConcreteBuilder.addExperienceFieldToList(new WorkExperience());
+            cvConcreteBuilder.addExperienceFieldToList(new Experience());
         }
         cvConcreteBuilder.buildContactMe(contactMe);
     }

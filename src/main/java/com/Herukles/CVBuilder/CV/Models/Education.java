@@ -13,6 +13,4 @@ public class Education {
     String nameOfInstitution;
     LocalDate EducationDateStart;
     LocalDate EducationDateEnd;
-    // dateStart = LocalDate.of(2020,12,1);
-
 }
