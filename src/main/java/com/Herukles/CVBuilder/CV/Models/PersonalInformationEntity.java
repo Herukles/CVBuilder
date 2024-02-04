@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Data
 @Component
-@Scope("prototype")
+@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
