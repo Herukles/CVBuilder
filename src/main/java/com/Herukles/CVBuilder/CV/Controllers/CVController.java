@@ -1,22 +1,29 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
+import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
+import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-@RestController
+import org.springframework.web.bind.annotation.*;
+
+@Controller
 @RequestMapping("/api/CV")
 public class CVController {
 
-    @Autowired
-    CV cv;
+    private final PersonalInfoService personalInfoService;
 
-    @GetMapping
-    public String getCV() {
-        return cv.toString();
+    @Autowired
+    public CVController(PersonalInfoService personalInfoService) {
+        this.personalInfoService = personalInfoService;
     }
+
+    // PersonalInfo/id
+    @PutMapping(path = "personalInfo/{id}")
+    public ResponseEntity<PersonalInformation> createPersonalInfo(@PathVariable final long id, @RequestBody final PersonalInformation personalInformation) {
+
+    }
+
 
 }
