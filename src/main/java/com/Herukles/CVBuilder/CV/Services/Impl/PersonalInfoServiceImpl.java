@@ -2,7 +2,7 @@ package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
 import com.Herukles.CVBuilder.CV.Models.PersonalInformationEntity;
-import com.Herukles.CVBuilder.CV.Repository.CVRepository;
+import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService {
 
-    private final CVRepository cvRepository;
+    private final PersonalInfoRepository cvRepository;
 
     @Autowired
-    public PersonalInfoServiceImpl(CVRepository cvRepository) {
+    public PersonalInfoServiceImpl(PersonalInfoRepository cvRepository) {
         this.cvRepository = cvRepository;
     }
 
