@@ -22,7 +22,7 @@ public class CVController {
     }
 
     // PersonalInfo/id
-    @PutMapping(path = "personalInfo/{id}")
+    @PutMapping(path = "/personalInfo/{id}")
     public ResponseEntity<PersonalInformation> createPersonalInfo(
             @PathVariable final long id,
             @RequestBody final PersonalInformation personalInformation) {

@@ -10,6 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+//import static methods to use in tests.
+import static com.Herukles.CVBuilder.TestData.testPersonalInfoEntity;
+import static com.Herukles.CVBuilder.TestData.testPersonalInfo;
+
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,25 +29,9 @@ public class PersonalInfoServiceImplTest {
 
     @Test
     public void checkThatPersonalInfoIsSaved() {
-        final PersonalInformation personalInformation = PersonalInformation.builder().
-                id(1)
-                .name("Albert")
-                .surname("Einstein")
-                .countryOfBorn("Ulm")
-                .dateOfBorn(LocalDate.of(1879,3,14))
-                .age(76)
-                .aboutMe("German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time.")
-                .build();
+        final PersonalInformation personalInformation = testPersonalInfo();
 
-                final PersonalInformationEntity personalInformationEntity = PersonalInformationEntity.builder().
-                        id(1)
-                        .name("Albert")
-                        .surname("Einstein")
-                        .countryOfBorn("Ulm")
-                        .dateOfBorn(LocalDate.of(1879,3,14))
-                        .age(76)
-                        .aboutMe("German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time.")
-                        .build();
+        final PersonalInformationEntity personalInformationEntity = testPersonalInfoEntity();
 
                 when(cvRepository.save(eq(personalInformationEntity))).thenReturn(personalInformationEntity);
 
