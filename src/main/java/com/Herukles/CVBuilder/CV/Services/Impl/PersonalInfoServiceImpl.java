@@ -7,21 +7,29 @@ import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService {
 
-    private final PersonalInfoRepository cvRepository;
+    private final PersonalInfoRepository personalInfoRepository;
 
     @Autowired
     public PersonalInfoServiceImpl(PersonalInfoRepository cvRepository) {
-        this.cvRepository = cvRepository;
+        this.personalInfoRepository = cvRepository;
     }
 
     @Override
     public PersonalInformation create(final PersonalInformation personalInformation) {
         final PersonalInformationEntity personalInformationEntity = personalInfoToEntity(personalInformation);
-        final PersonalInformationEntity savedPersonalInfoEntity = cvRepository.save(personalInformationEntity);
+        final PersonalInformationEntity savedPersonalInfoEntity = personalInfoRepository.save(personalInformationEntity);
         return personalInfoEntityToPersonalInfo(savedPersonalInfoEntity);
+    }
+
+    @Override
+    public Optional<PersonalInformation> findById(Long id) {
+        final Optional<PersonalInformationEntity> foundPersonalInfo = personalInfoRepository.findById(id);
+        return foundPersonalInfo.map(personalInformation -> personalInfoEntityToPersonalInfo(personalInformation) );
     }
 
     private PersonalInformationEntity personalInfoToEntity(PersonalInformation personalInformation) {

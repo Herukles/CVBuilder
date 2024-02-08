@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/CV")
 public class CVController {
@@ -30,6 +32,12 @@ public class CVController {
             final PersonalInformation savedPersonalInfo = personalInfoService.create(personalInformation);
             final ResponseEntity<PersonalInformation> response = new ResponseEntity<PersonalInformation>(savedPersonalInfo, HttpStatus.CREATED);
             return response;
+    }
+
+    @GetMapping(path = "/personalInfo/{id}")
+    public ResponseEntity<PersonalInformation> retrievePersonalInfo(@PathVariable final long id) {
+        Optional<PersonalInformation> foundPersonalInfo =  personalInfoService.findById(id);
+        return foundPersonalInfo.map(personalInformation -> new ResponseEntity<PersonalInformation>(personalInformation, HttpStatus.OK)).orElse(new ResponseEntity<PersonalInformation>(HttpStatus.NOT_FOUND));
     }
 
 }

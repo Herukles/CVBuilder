@@ -15,6 +15,7 @@ import static com.Herukles.CVBuilder.TestData.testPersonalInfoEntity;
 import static com.Herukles.CVBuilder.TestData.testPersonalInfo;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -37,5 +38,23 @@ public class PersonalInfoServiceImplTest {
 
                 final PersonalInformation result = underTest.create(personalInformation);
                 assertEquals(personalInformation, result);
+    }
+
+    @Test
+    public void testThatFindByIdReturnsEmptyWhenNoPersonal() {
+        final long id = 9999999;
+        when(cvRepository.findById(eq(id))).thenReturn(Optional.empty());
+        final Optional<PersonalInformation> result = underTest.findById(id);
+        assertEquals(Optional.empty(), result);
+    }
+
+    @Test
+    public void testThatFindByIdReturnsPersonalInfoWhenExists() {
+        final PersonalInformation personalInformation = testPersonalInfo();
+        final PersonalInformationEntity personalInformationEntity = testPersonalInfoEntity();
+
+        when(cvRepository.findById(eq(personalInformation.getId()))).thenReturn(Optional.of(personalInformationEntity));
+        final Optional<PersonalInformation> result = underTest.findById(personalInformation.getId());
+        assertEquals(Optional.of(personalInformation), result);
     }
 }

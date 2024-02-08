@@ -2,6 +2,7 @@ package com.Herukles.CVBuilder.CV.Models;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "PersonalInfos")
+@Table(name = "PersonalInfo")
 public class PersonalInformationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +21,8 @@ public class PersonalInformationEntity {
     private String name;
     private String surname;
     private String countryOfBorn;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBorn;
     private int age;
     private String aboutMe;

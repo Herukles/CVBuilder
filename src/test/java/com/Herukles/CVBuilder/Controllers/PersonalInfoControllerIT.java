@@ -1,6 +1,7 @@
 package com.Herukles.CVBuilder.Controllers;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
+import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import com.Herukles.CVBuilder.TestData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -23,6 +24,9 @@ public class PersonalInfoControllerIT {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private PersonalInfoService personalInfoService;
+
     @Test
     public void testThatPersonalInfoIsCreated() throws Exception
     {
@@ -40,5 +44,31 @@ public class PersonalInfoControllerIT {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInformation.getDateOfBorn().toString()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInformation.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInformation.getAboutMe()));
+    }
+
+    @Test
+    public void testThatRetrievedPersonalInfoReturns404WhenPersonalNotFound() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/CV/personalInfo/9999999"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+    @Test
+    public void testThatRetrievedPersonalInfoReturnsHttp200AndPersonalWhenPersonalInfoExists() throws Exception{
+        final PersonalInformation personalInformation = TestData.testPersonalInfo();
+        personalInfoService.create(personalInformation);
+
+        System.out.println("without toString"+personalInformation.getDateOfBorn());
+        System.out.println("with toString"+personalInformation.getDateOfBorn().toString());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/CV/personalInfo/"+personalInformation.getId()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(personalInformation.getId()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(personalInformation.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(personalInformation.getSurname()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInformation.getCountryOfBorn()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInformation.getDateOfBorn().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInformation.getAge()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInformation.getAboutMe()));
+
     }
 }
