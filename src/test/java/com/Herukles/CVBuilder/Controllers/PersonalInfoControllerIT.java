@@ -3,6 +3,7 @@ package com.Herukles.CVBuilder.Controllers;
 import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
 import com.Herukles.CVBuilder.TestData;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.core.AutoConfigureCache;
@@ -23,6 +24,7 @@ public class PersonalInfoControllerIT {
     public void testThatPersonalInfoIsCreated() throws Exception
     {
         final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         final PersonalInformation personalInformation = TestData.testPersonalInfo();
         final String personalInfoJson = objectMapper.writeValueAsString(personalInformation);
         mockMvc.perform(MockMvcRequestBuilders.put("/personalInfo/"+personalInformation.getId()).content("application/json")).andExpect(MockMvcResultMatchers.content().json(personalInfoJson));

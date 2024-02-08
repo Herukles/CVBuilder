@@ -25,4 +25,6 @@ public class PersonalInformation {
     private LocalDate dateOfBorn;
     private int age;
     private String aboutMe;
+
+
 }
