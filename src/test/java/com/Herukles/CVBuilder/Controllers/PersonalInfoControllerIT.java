@@ -70,5 +70,7 @@ public class PersonalInfoControllerIT {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInformation.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInformation.getAboutMe()));
 
+
+                //1:00:50
     }
 }
