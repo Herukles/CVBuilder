@@ -12,5 +12,5 @@ public interface PersonalInfoService {
     PersonalInfo create(PersonalInfo personalInfo);
     Optional<PersonalInfo> findById(Long id);
 
-    List<PersonalInfo> getPersonalInfos();
+    List<PersonalInfo> listPersonal();
 }

@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/CV")
+@RequestMapping("/")
 public class CVController {
 
     private final PersonalInfoService personalInfoService;
@@ -35,6 +36,11 @@ public class CVController {
     public ResponseEntity<PersonalInfo> retrievePersonalInfo(@PathVariable final long id) {
         Optional<PersonalInfo> foundPersonalInfo =  personalInfoService.findById(id);
         return foundPersonalInfo.map(personalInformation -> new ResponseEntity<PersonalInfo>(personalInformation, HttpStatus.OK)).orElse(new ResponseEntity<PersonalInfo>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping(path = "/personalInfo/")
+    public ResponseEntity<List<PersonalInfo>> listPersonalInfo() {
+        return new ResponseEntity<List<PersonalInfo>>(personalInfoService.listPersonal(), HttpStatus.OK);
     }
 
 }

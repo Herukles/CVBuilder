@@ -7,7 +7,9 @@ import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService {
@@ -30,6 +32,12 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
     public Optional<PersonalInfo> findById(Long id) {
         final Optional<PersonalInfoEntity> foundPersonalInfo = personalInfoRepository.findById(id);
         return foundPersonalInfo.map(personalInformation -> personalInfoEntityToPersonalInfo(personalInformation) );
+    }
+
+    @Override
+    public List<PersonalInfo> listPersonal() {
+        final List<PersonalInfoEntity> foundPersonals = personalInfoRepository.findAll();
+        return foundPersonals.stream().map(personalInfo -> personalInfoEntityToPersonalInfo(personalInfo)).collect(Collectors.toList());
     }
 
     private PersonalInfoEntity personalInfoToEntity(PersonalInfo personalInfo) {

@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static com.Herukles.CVBuilder.TestData.testPersonalInfoEntity;
 import static com.Herukles.CVBuilder.TestData.testPersonalInfo;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -55,5 +56,19 @@ public class PersonalInfoServiceImplTest {
         when(cvRepository.findById(eq(personalInfo.getId()))).thenReturn(Optional.of(personalInfoEntity));
         final Optional<PersonalInfo> result = underTest.findById(personalInfo.getId());
         assertEquals(Optional.of(personalInfo), result);
+    }
+
+    @Test
+    public void testThatListOfPersonalsReturnsEmptyWhenNoPersonalsExists() {
+        final List<PersonalInfo> result = underTest.listPersonal();
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    public void testThatListOfPersonalsReturnsListWhenPersonalsExists() {
+        final PersonalInfoEntity personalInfoEntity = testPersonalInfoEntity();
+        when(cvRepository.findAll()).thenReturn(List.of(personalInfoEntity));
+        final List<PersonalInfo> result = underTest.listPersonal();
+        assertEquals(1,result.size());
     }
 }
