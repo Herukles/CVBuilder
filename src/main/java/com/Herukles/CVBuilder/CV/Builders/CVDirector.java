@@ -12,7 +12,7 @@ public class CVDirector {
     int howManyExperienceFields;
 
     @Autowired
-    private PersonalInformationEntity person;
+    private PersonalInfoEntity person;
 
     @Autowired
     private List<Education> education;

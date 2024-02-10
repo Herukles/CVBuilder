@@ -18,7 +18,7 @@ public class CV {
 
 
     @Autowired
-    private PersonalInformationEntity person;
+    private PersonalInfoEntity person;
 
     @Autowired
     private List<Education> educationList;
@@ -32,7 +32,7 @@ public class CV {
     public CV() {
     }
 
-    public CV(PersonalInformationEntity person, List<Education> education, List<Experience> workExperience, ContactInfo contactMe) {
+    public CV(PersonalInfoEntity person, List<Education> education, List<Experience> workExperience, ContactInfo contactMe) {
         this.person = person;
         this.educationList = education;
         this.workExperienceList = workExperience;

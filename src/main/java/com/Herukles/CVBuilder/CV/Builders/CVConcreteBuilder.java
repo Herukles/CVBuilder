@@ -17,7 +17,7 @@ public class CVConcreteBuilder implements CVBuilder{
     @Autowired
     private List<Education> educationList;
     @Autowired
-    private PersonalInformationEntity person;
+    private PersonalInfoEntity person;
     @Autowired
     private List<Experience> workExperienceList;
     @Autowired
@@ -29,7 +29,7 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildPersonal(PersonalInformationEntity person) {
+    public void buildPersonal(PersonalInfoEntity person) {
         this.person = person;
     }
 

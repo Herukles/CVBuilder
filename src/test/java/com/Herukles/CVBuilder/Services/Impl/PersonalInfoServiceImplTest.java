@@ -1,7 +1,7 @@
 package com.Herukles.CVBuilder.Services.Impl;
 
-import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
-import com.Herukles.CVBuilder.CV.Models.PersonalInformationEntity;
+import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
+import com.Herukles.CVBuilder.CV.Models.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.Impl.PersonalInfoServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static com.Herukles.CVBuilder.TestData.testPersonalInfoEntity;
 import static com.Herukles.CVBuilder.TestData.testPersonalInfo;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,31 +29,31 @@ public class PersonalInfoServiceImplTest {
 
     @Test
     public void checkThatPersonalInfoIsSaved() {
-        final PersonalInformation personalInformation = testPersonalInfo();
+        final PersonalInfo personalInfo = testPersonalInfo();
 
-        final PersonalInformationEntity personalInformationEntity = testPersonalInfoEntity();
+        final PersonalInfoEntity personalInfoEntity = testPersonalInfoEntity();
 
-                when(cvRepository.save(eq(personalInformationEntity))).thenReturn(personalInformationEntity);
+                when(cvRepository.save(eq(personalInfoEntity))).thenReturn(personalInfoEntity);
 
-                final PersonalInformation result = underTest.create(personalInformation);
-                assertEquals(personalInformation, result);
+                final PersonalInfo result = underTest.create(personalInfo);
+                assertEquals(personalInfo, result);
     }
 
     @Test
     public void testThatFindByIdReturnsEmptyWhenNoPersonal() {
         final long id = 9999999;
         when(cvRepository.findById(eq(id))).thenReturn(Optional.empty());
-        final Optional<PersonalInformation> result = underTest.findById(id);
+        final Optional<PersonalInfo> result = underTest.findById(id);
         assertEquals(Optional.empty(), result);
     }
 
     @Test
     public void testThatFindByIdReturnsPersonalInfoWhenExists() {
-        final PersonalInformation personalInformation = testPersonalInfo();
-        final PersonalInformationEntity personalInformationEntity = testPersonalInfoEntity();
+        final PersonalInfo personalInfo = testPersonalInfo();
+        final PersonalInfoEntity personalInfoEntity = testPersonalInfoEntity();
 
-        when(cvRepository.findById(eq(personalInformation.getId()))).thenReturn(Optional.of(personalInformationEntity));
-        final Optional<PersonalInformation> result = underTest.findById(personalInformation.getId());
-        assertEquals(Optional.of(personalInformation), result);
+        when(cvRepository.findById(eq(personalInfo.getId()))).thenReturn(Optional.of(personalInfoEntity));
+        final Optional<PersonalInfo> result = underTest.findById(personalInfo.getId());
+        assertEquals(Optional.of(personalInfo), result);
     }
 }
