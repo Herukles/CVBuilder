@@ -43,4 +43,6 @@ public class CVController {
         return new ResponseEntity<List<PersonalInfo>>(personalInfoService.listPersonal(), HttpStatus.OK);
     }
 
+
+
 }
