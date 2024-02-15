@@ -29,13 +29,6 @@ public class CVDirector {
         this.howManyExperienceFields = 1;
     }
 
-    public void setHowManyEducationFields(int howManyEducationFields) {
-        this.howManyEducationFields = howManyEducationFields;
-    }
-
-    public void setHowManyExperienceFields(int howManyExperienceFields) {
-        this.howManyExperienceFields = howManyExperienceFields;
-    }
 
     public CVDirector(int howManyEducationFields, int howManyExperienceFields) {
         this.howManyEducationFields = howManyEducationFields;

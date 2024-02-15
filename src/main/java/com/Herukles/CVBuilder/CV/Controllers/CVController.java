@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
+import com.Herukles.CVBuilder.CV.Models.CV;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,6 @@ public class CVController {
         this.personalInfoService = personalInfoService;
     }
 
-    // PersonalInfo/id
     @PutMapping(path = "/personalInfo/{id}")
     public ResponseEntity<PersonalInfo> createPersonalInfo(
             @PathVariable final long id,
@@ -41,6 +41,12 @@ public class CVController {
     @GetMapping(path = "/personalInfo/")
     public ResponseEntity<List<PersonalInfo>> listPersonalInfo() {
         return new ResponseEntity<List<PersonalInfo>>(personalInfoService.listPersonal(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<List<PersonalInfo>> postPersonalInfo(PersonalInfo personalInfo) {
+        personalInfoService.create(personalInfo);
+        return new ResponseEntity<List<PersonalInfo>>(HttpStatus.CREATED);
     }
 
 
