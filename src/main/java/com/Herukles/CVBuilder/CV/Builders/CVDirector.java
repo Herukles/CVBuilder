@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
+import com.Herukles.CVBuilder.CV.Builders.Implementation.CVBuilderImpl;
 import com.Herukles.CVBuilder.CV.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ public class CVDirector {
     int howManyExperienceFields;
 
     @Autowired
-    private PersonalInformationEntity person;
+    private PersonalInfoEntity person;
 
     @Autowired
     private List<Education> education;
@@ -28,29 +29,22 @@ public class CVDirector {
         this.howManyExperienceFields = 1;
     }
 
-    public void setHowManyEducationFields(int howManyEducationFields) {
-        this.howManyEducationFields = howManyEducationFields;
-    }
-
-    public void setHowManyExperienceFields(int howManyExperienceFields) {
-        this.howManyExperienceFields = howManyExperienceFields;
-    }
 
     public CVDirector(int howManyEducationFields, int howManyExperienceFields) {
         this.howManyEducationFields = howManyEducationFields;
         this.howManyExperienceFields = howManyExperienceFields;
     }
 
-    public void constructCV(CVConcreteBuilder cvConcreteBuilder) {
-        cvConcreteBuilder.buildPersonal(person);
-        cvConcreteBuilder.buildEducationList();
-        cvConcreteBuilder.buildExperienceList();
+    public void constructCV(CVBuilderImpl cvBuilderImpl) {
+        cvBuilderImpl.buildPersonal(person);
+        cvBuilderImpl.buildEducationList();
+        cvBuilderImpl.buildExperienceList();
         for(int i = 0; i < howManyEducationFields;i++) {
-            cvConcreteBuilder.addEducationFieldToList(new Education());
+            cvBuilderImpl.addEducationFieldToList(new Education());
         }
         for(int i = 0; i < howManyExperienceFields;i++) {
-            cvConcreteBuilder.addExperienceFieldToList(new Experience());
+            cvBuilderImpl.addExperienceFieldToList(new Experience());
         }
-        cvConcreteBuilder.buildContactMe(contactMe);
+        cvBuilderImpl.buildContactMe(contactMe);
     }
 }

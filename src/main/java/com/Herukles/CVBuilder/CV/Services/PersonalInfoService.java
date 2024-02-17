@@ -1,13 +1,16 @@
 package com.Herukles.CVBuilder.CV.Services;
 
-import com.Herukles.CVBuilder.CV.Models.PersonalInformation;
+import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public interface PersonalInfoService {
 
-    PersonalInformation create(PersonalInformation personalInformation);
-    Optional<PersonalInformation> findById(Long id);
+    PersonalInfo create(PersonalInfo personalInfo);
+    Optional<PersonalInfo> findById(Long id);
+
+    List<PersonalInfo> listPersonal();
 }

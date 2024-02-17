@@ -1,5 +1,6 @@
-package com.Herukles.CVBuilder.CV.Builders;
+package com.Herukles.CVBuilder.CV.Builders.Implementation;
 
+import com.Herukles.CVBuilder.CV.Builders.CVBuilder;
 import com.Herukles.CVBuilder.CV.Models.*;
 
 import lombok.Data;
@@ -12,12 +13,12 @@ import java.util.List;
 
 @Component
 @Data
-public class CVConcreteBuilder implements CVBuilder{
+public class CVBuilderImpl implements CVBuilder {
 
     @Autowired
     private List<Education> educationList;
     @Autowired
-    private PersonalInformationEntity person;
+    private PersonalInfoEntity person;
     @Autowired
     private List<Experience> workExperienceList;
     @Autowired
@@ -29,7 +30,7 @@ public class CVConcreteBuilder implements CVBuilder{
     }
 
     @Override
-    public void buildPersonal(PersonalInformationEntity person) {
+    public void buildPersonal(PersonalInfoEntity person) {
         this.person = person;
     }
 

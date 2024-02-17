@@ -3,7 +3,7 @@ package com.Herukles.CVBuilder.CV.Builders;
 import com.Herukles.CVBuilder.CV.Models.*;
 
 public interface CVBuilder {
-    public void buildPersonal(PersonalInformationEntity person);
+    public void buildPersonal(PersonalInfoEntity person);
     public void buildExperienceList();
     public void buildEducationList();
 
