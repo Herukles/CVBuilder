@@ -1,7 +1,7 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
-import com.Herukles.CVBuilder.CV.Models.PersonalInfoEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

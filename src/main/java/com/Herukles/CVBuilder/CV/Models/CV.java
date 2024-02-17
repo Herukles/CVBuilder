@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Models;
 
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
