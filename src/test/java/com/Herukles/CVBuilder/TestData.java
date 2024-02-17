@@ -14,7 +14,7 @@ public final class TestData {
                 .name("Albert")
                 .surname("Einstein")
                 .countryOfBorn("Ulm")
-                .dateOfBorn(LocalDate.of(1979,3,14))
+                .dateOfBirth(LocalDate.of(1979,3,14))
                 .age(76)
                 .aboutMe("German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time.")
                 .build();
@@ -25,7 +25,7 @@ public final class TestData {
                 .name("Albert")
                 .surname("Einstein")
                 .countryOfBorn("Ulm")
-                .dateOfBorn(LocalDate.of(1979,3,14))
+                .dateOfBirth(LocalDate.of(1979,3,14))
                 .age(76)
                 .aboutMe("German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time.")
                 .build();

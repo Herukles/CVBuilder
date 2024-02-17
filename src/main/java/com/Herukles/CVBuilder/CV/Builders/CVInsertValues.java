@@ -21,7 +21,7 @@ public class CVInsertValues {
                 personalInfo.setName(name);
                 personalInfo.setAge(age);
                 personalInfo.setCountryOfBorn(country);
-                personalInfo.setDateOfBorn(dateOfBorn);
+                personalInfo.setDateOfBirth(dateOfBorn);
                 personalInfo.setSurname(surname);
             }
         }
@@ -32,8 +32,8 @@ public class CVInsertValues {
             if(experience != null) {
                 experience.setCompanyName(companyName);
                 experience.setDescription(description);
-                experience.setWorkExperienceDateStart(dateStart);
-                experience.setWorkExperienceDateEnd(dateEnd);
+                experience.setDateStart(dateStart);
+                experience.setDateEnd(dateEnd);
             }
         }
 

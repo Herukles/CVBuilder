@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Experience {
-    LocalDate WorkExperienceDateStart;
-    LocalDate WorkExperienceDateEnd;
+    LocalDate dateStart;
+    LocalDate dateEnd;
     String companyName;
     String description;
 }

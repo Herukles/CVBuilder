@@ -40,7 +40,7 @@ public class PersonalInfoControllerIT {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(personalInfo.getName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(personalInfo.getSurname()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBorn()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBorn().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBirth().toString()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInfo.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInfo.getAboutMe()));
     }
@@ -55,8 +55,8 @@ public class PersonalInfoControllerIT {
         final PersonalInfo personalInfo = TestData.testPersonalInfo();
         personalInfoService.create(personalInfo);
 
-        System.out.println("without toString"+ personalInfo.getDateOfBorn());
-        System.out.println("with toString"+ personalInfo.getDateOfBorn().toString());
+        System.out.println("without toString"+ personalInfo.getDateOfBirth());
+        System.out.println("with toString"+ personalInfo.getDateOfBirth().toString());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/CV/personalInfo/"+ personalInfo.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -65,7 +65,7 @@ public class PersonalInfoControllerIT {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(personalInfo.getName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(personalInfo.getSurname()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBorn()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBorn().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBirth().toString()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInfo.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInfo.getAboutMe()));
 

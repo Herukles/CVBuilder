@@ -46,7 +46,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
                     .name(personalInfo.getName())
                     .surname(personalInfo.getSurname())
                     .countryOfBorn(personalInfo.getCountryOfBorn())
-                    .dateOfBorn(personalInfo.getDateOfBorn())
+                    .dateOfBirth(personalInfo.getDateOfBirth())
                     .age(personalInfo.getAge())
                     .aboutMe(personalInfo.getAboutMe())
                     .build();
@@ -59,7 +59,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
                 .name(personalInfoEntity.getName())
                 .surname(personalInfoEntity.getSurname())
                 .countryOfBorn(personalInfoEntity.getCountryOfBorn())
-                .dateOfBorn(personalInfoEntity.getDateOfBorn())
+                .dateOfBirth(personalInfoEntity.getDateOfBirth())
                 .age(personalInfoEntity.getAge())
                 .aboutMe(personalInfoEntity.getAboutMe())
                 .build();

@@ -6,10 +6,10 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 
+@Setter
 @Data
 @Component
 @Getter
-@Setter
 public class ContactInfo {
     private String phoneNumber;
     private String email;

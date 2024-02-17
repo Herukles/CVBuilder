@@ -4,7 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Data
 @Component
@@ -13,6 +12,8 @@ import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "PersonalInfo")
+@Getter
+@Setter
 public class PersonalInfoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +24,7 @@ public class PersonalInfoEntity {
     private String countryOfBorn;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dateOfBorn;
+    private LocalDate dateOfBirth;
     private int age;
     private String aboutMe;
 }
