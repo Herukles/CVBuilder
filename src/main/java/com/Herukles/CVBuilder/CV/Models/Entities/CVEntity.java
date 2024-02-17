@@ -23,6 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name="CV")
+@Builder
 public class CVEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
