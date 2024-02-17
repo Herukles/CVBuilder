@@ -13,11 +13,11 @@ import java.util.List;
 @Scope("prototype")
 @Data
 @Component
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class CV {
-
 
     @Autowired
     private PersonalInfoEntity person;

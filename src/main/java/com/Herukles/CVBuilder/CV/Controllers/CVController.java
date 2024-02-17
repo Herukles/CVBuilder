@@ -49,6 +49,6 @@ public class CVController {
         return new ResponseEntity<>(personalInfo,HttpStatus.CREATED);
     }
 
-
-
+    // CVform page
+    
 }

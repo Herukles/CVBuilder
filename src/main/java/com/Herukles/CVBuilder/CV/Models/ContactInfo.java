@@ -1,11 +1,15 @@
 package com.Herukles.CVBuilder.CV.Models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 
 @Data
 @Component
+@Getter
+@Setter
 public class ContactInfo {
     private String phoneNumber;
     private String email;
