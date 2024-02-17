@@ -1,4 +1,5 @@
-package com.Herukles.CVBuilder.CV.Models;
+package com.Herukles.CVBuilder.CV.Models.Entities;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;

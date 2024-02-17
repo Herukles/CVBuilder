@@ -2,6 +2,7 @@ package com.Herukles.CVBuilder.CV.Builders;
 
 import com.Herukles.CVBuilder.CV.Builders.Implementation.CVBuilderImpl;
 import com.Herukles.CVBuilder.CV.Models.*;
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

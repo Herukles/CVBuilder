@@ -3,6 +3,7 @@ package com.Herukles.CVBuilder.CV.Builders.Implementation;
 import com.Herukles.CVBuilder.CV.Builders.CVBuilder;
 import com.Herukles.CVBuilder.CV.Models.*;
 
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 

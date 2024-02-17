@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Models;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Scope("prototype")
 @Getter
 @Setter
+@Builder
 public class Experience {
     LocalDate dateStart;
     LocalDate dateEnd;

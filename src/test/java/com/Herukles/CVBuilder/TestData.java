@@ -1,7 +1,7 @@
 package com.Herukles.CVBuilder;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
-import com.Herukles.CVBuilder.CV.Models.PersonalInfoEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 
 import java.time.LocalDate;
 
