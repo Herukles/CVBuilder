@@ -43,10 +43,10 @@ public class CVController {
         return new ResponseEntity<List<PersonalInfo>>(personalInfoService.listPersonal(), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<List<PersonalInfo>> postPersonalInfo(PersonalInfo personalInfo) {
+    @PostMapping(path = "/personalInfo/create")
+    public ResponseEntity<PersonalInfo> postPersonalInfo(PersonalInfo personalInfo) {
         personalInfoService.create(personalInfo);
-        return new ResponseEntity<List<PersonalInfo>>(HttpStatus.CREATED);
+        return new ResponseEntity<>(personalInfo,HttpStatus.CREATED);
     }
 
 

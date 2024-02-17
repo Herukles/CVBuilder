@@ -1,7 +1,10 @@
 package com.Herukles.CVBuilder.CV.Builders;
 
-import
+
+import com.Herukles.CVBuilder.CV.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.time.LocalDate;
 
 public class CVInsertValues {
         @Autowired
@@ -13,24 +16,19 @@ public class CVInsertValues {
             this.cv = cv;
         }
 
-        public void insertPersonValues(Person person, String name, String surname, int age, LocalDate dateOfBorn, String country) {
+        public void insertPersonValues(PersonalInfo personalInfo, String name, String surname, int age, LocalDate dateOfBorn, String country) {
             if(cv.getPerson() != null) {
-                person.setName(name);
-                person.setAge(age);
-                person.setCountryOfBorn(country);
-                person.setDateOfBorn(dateOfBorn);
-                person.setSurname(surname);
+                personalInfo.setName(name);
+                personalInfo.setAge(age);
+                personalInfo.setCountryOfBorn(country);
+                personalInfo.setDateOfBorn(dateOfBorn);
+                personalInfo.setSurname(surname);
             }
         }
 
-        public void insertAboutMeValues(AboutMe aboutMe, String aboutMeString, String degree) {
-            if(aboutMe != null) {
-                aboutMe.setAboutMeString(aboutMeString);
-                aboutMe.setDegree(degree);
-            }
-        }
 
-        public void insertExperienceValues(WorkExperience experience, String companyName, String description, LocalDate dateStart, LocalDate dateEnd) {
+
+        public void insertExperienceValues(Experience experience, String companyName, String description, LocalDate dateStart, LocalDate dateEnd) {
             if(experience != null) {
                 experience.setCompanyName(companyName);
                 experience.setDescription(description);
@@ -47,12 +45,11 @@ public class CVInsertValues {
             }
         }
 
-        public void insertContactMeValues(ContactMe contactMe, String phoneNumber, String email, String website) {
+        public void insertContactMeValues(ContactInfo contactMe, String phoneNumber, String email, String website) {
             if(contactMe != null) {
                 contactMe.setEmail(email);
                 contactMe.setWebsite(website);
                 contactMe.setPhoneNumber(phoneNumber);
             }
         }
-    }
 }
