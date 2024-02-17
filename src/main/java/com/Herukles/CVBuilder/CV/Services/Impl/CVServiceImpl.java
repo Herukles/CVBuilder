@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CVServiceImpl implements CVService {
     private final CVRepository cvRepository;
@@ -29,12 +30,14 @@ public class CVServiceImpl implements CVService {
 
     @Override
     public Optional<CV> findById(Long id) {
-        return Optional.empty();
+        final Optional<CVEntity> foundCVEntity = cvRepository.findById(id);
+        return foundCVEntity.map(cv -> cvEntityToCV(cv));
     }
 
     @Override
     public List<CV> listOfCV() {
-        return null;
+        final List<CVEntity> foundCVs = cvRepository.findAll();
+        return foundCVs.stream().map(cv -> cvEntityToCV(cv)).collect(Collectors.toList());
     }
 
     private CVEntity cvToCVEntity(CV cv) {
