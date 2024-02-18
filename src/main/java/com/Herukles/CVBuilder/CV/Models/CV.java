@@ -32,12 +32,12 @@ public class CV {
     private PersonalInfoEntity person;
 
     @Autowired
-    private List<Education> educationList;
+    private List<EducationEntity> educationEntityList;
 
     @Autowired
-    private List<Experience> workExperienceList;
+    private List<ExperienceEntity> workExperienceListEntity;
 
     @Autowired
-    private ContactInfo contactMe;
+    private ContactInfoEntity contactMe;
 
 }

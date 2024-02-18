@@ -1,6 +1,7 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.apache.coyote.Response;
@@ -31,6 +32,8 @@ public class CVController {
         final CV savedCV = cvService.create(cv);
         return new ResponseEntity<CV>(savedCV, HttpStatus.CREATED);
     }
+
+
 
     @GetMapping(path="/{id}")
     public ResponseEntity<CV> retrieveCVsById(@PathVariable final long id) {

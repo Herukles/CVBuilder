@@ -28,4 +28,7 @@ public class PersonalInfoEntity {
     private LocalDate dateOfBirth;
     private int age;
     private String aboutMe;
+
+    @OneToOne
+    CVEntity cvEntity;
 }
