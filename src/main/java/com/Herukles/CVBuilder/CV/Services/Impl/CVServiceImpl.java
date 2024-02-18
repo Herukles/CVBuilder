@@ -6,6 +6,7 @@ import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Repository.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class CVServiceImpl implements CVService {
     private final CVRepository cvRepository;
 
