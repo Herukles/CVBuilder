@@ -52,7 +52,7 @@ public class CVServiceImpl implements CVService {
                 .name(cv.getPerson().getName())
                 .surname(cv.getPerson().getSurname())
                 .age(cv.getPerson().getAge())
-                .countryOfBorn(cv.getPerson().getCountryOfBorn())
+                .countryOfBirth(cv.getPerson().getCountryOfBirth())
                 .dateOfBirth(cv.getPerson().getDateOfBirth())
                 .aboutMe(cv.getPerson().getAboutMe()).build();
 
@@ -99,7 +99,7 @@ public class CVServiceImpl implements CVService {
                 .name(cvEntity.getPerson().getName())
                 .surname(cvEntity.getPerson().getSurname())
                 .age(cvEntity.getPerson().getAge())
-                .countryOfBorn(cvEntity.getPerson().getCountryOfBorn())
+                .countryOfBirth(cvEntity.getPerson().getCountryOfBirth())
                 .dateOfBirth(cvEntity.getPerson().getDateOfBirth())
                 .aboutMe(cvEntity.getPerson().getAboutMe()).build();
 

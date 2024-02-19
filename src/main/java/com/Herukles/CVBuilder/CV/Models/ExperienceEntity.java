@@ -21,10 +21,8 @@ public class ExperienceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     @ManyToOne()
     CVEntity cvEntity;
-
     LocalDate dateStart;
     LocalDate dateEnd;
     String companyName;
