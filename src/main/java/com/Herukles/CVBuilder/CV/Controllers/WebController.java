@@ -17,5 +17,10 @@ public class WebController {
         return "startPage";
     }
 
+    @GetMapping(path="/home/fillPersonal")
+    public String fillPersonal(Model model) {
+        return "fillPersonal";
+    }
+
 
 }

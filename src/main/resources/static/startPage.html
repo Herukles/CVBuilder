@@ -6,7 +6,15 @@
 </head>
 <body>
 <p>please fill form with your data: </p>
+<form th:action="@{/personal/create}" th:object="${PersonalInfo}" method="post">
+    <div>
+        <label>name:</label>
+        <input type="text"  placeholder="enter name">
+<!--        https://frontbackend.com/thymeleaf/working-with-forms-in-thymeleaf-->
+    </div>
+    <br>
 
+</form>
 
 </body>
 </html>

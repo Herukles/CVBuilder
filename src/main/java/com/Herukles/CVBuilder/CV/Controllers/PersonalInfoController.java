@@ -21,7 +21,7 @@ public class PersonalInfoController {
         this.personalInfoService = personalInfoService;
     }
 
-    @PutMapping(path = "/personalInfo/{id}")
+    @PutMapping(path = "/{id}")
     public ResponseEntity<PersonalInfo> createPersonalInfo(
             @PathVariable final long id,
             @RequestBody final PersonalInfo personalInfo) {
@@ -31,18 +31,18 @@ public class PersonalInfoController {
             return response;
     }
 
-    @GetMapping(path = "/personalInfo/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<PersonalInfo> retrievePersonalInfo(@PathVariable final long id) {
         Optional<PersonalInfo> foundPersonalInfo =  personalInfoService.findById(id);
         return foundPersonalInfo.map(personalInformation -> new ResponseEntity<PersonalInfo>(personalInformation, HttpStatus.OK)).orElse(new ResponseEntity<PersonalInfo>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping(path = "/personalInfo/")
+    @GetMapping(path = "/")
     public ResponseEntity<List<PersonalInfo>> listPersonalInfo() {
         return new ResponseEntity<List<PersonalInfo>>(personalInfoService.listPersonal(), HttpStatus.OK);
     }
 
-    @PostMapping(path = "/personalInfo/create")
+    @PostMapping(path = "/create")
     public ResponseEntity<PersonalInfo> postPersonalInfo(PersonalInfo personalInfo) {
         personalInfoService.create(personalInfo);
         return new ResponseEntity<>(personalInfo,HttpStatus.CREATED);
