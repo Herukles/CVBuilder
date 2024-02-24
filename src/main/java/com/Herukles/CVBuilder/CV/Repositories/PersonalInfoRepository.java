@@ -1,4 +1,4 @@
-package com.Herukles.CVBuilder.CV.Repository;
+package com.Herukles.CVBuilder.CV.Repositories;
 
 import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

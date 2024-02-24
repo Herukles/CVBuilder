@@ -1,8 +1,5 @@
 package com.Herukles.CVBuilder.CV.Models.Entities;
 
-import com.Herukles.CVBuilder.CV.Models.ContactInfoEntity;
-import com.Herukles.CVBuilder.CV.Models.EducationEntity;
-import com.Herukles.CVBuilder.CV.Models.ExperienceEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Scope;

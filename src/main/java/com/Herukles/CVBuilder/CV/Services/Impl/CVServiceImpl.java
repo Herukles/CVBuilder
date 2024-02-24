@@ -1,9 +1,8 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.*;
-import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
-import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
-import com.Herukles.CVBuilder.CV.Repository.CVRepository;
+import com.Herukles.CVBuilder.CV.Models.Entities.*;
+import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

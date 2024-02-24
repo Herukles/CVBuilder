@@ -1,5 +1,8 @@
 package com.Herukles.CVBuilder.CV.Models;
 
+import com.Herukles.CVBuilder.CV.Models.Entities.ContactInfoEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.EducationEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.ExperienceEntity;
 import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

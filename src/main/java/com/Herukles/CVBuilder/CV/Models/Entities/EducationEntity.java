@@ -1,4 +1,4 @@
-package com.Herukles.CVBuilder.CV.Models;
+package com.Herukles.CVBuilder.CV.Models.Entities;
 
 import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
 import jakarta.persistence.*;

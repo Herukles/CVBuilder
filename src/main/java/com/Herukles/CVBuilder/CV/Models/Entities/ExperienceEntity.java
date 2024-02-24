@@ -1,30 +1,30 @@
-package com.Herukles.CVBuilder.CV.Models;
+package com.Herukles.CVBuilder.CV.Models.Entities;
 
 import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import java.time.LocalDate;
 
 
-@Setter
-@Data
 @Component
+@Data
+@Scope("prototype")
 @Getter
+@Setter
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactInfoEntity {
-
+public class ExperienceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @OneToOne
+    @ManyToOne()
     CVEntity cvEntity;
-
-    private String phoneNumber;
-    private String email;
-    private String website;
-
+    LocalDate dateStart;
+    LocalDate dateEnd;
+    String companyName;
+    String description;
 }

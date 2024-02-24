@@ -1,16 +1,15 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
-import com.Herukles.CVBuilder.CV.Models.ContactInfoEntity;
-import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
-import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
-import com.Herukles.CVBuilder.CV.Repository.ContactMeRepository;
-import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
+import com.Herukles.CVBuilder.CV.Models.Entities.ContactInfoEntity;
+import com.Herukles.CVBuilder.CV.Repositories.ContactMeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+@Service
 public class ContactMeServiceImpl {
     private final ContactMeRepository contactMeRepository;
 
