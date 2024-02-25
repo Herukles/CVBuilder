@@ -10,11 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/CV/")
 public class CVController {
     private final CVService cvService;
@@ -32,7 +33,6 @@ public class CVController {
         final CV savedCV = cvService.create(cv);
         return new ResponseEntity<CV>(savedCV, HttpStatus.CREATED);
     }
-
 
 
     @GetMapping(path="/{id}")

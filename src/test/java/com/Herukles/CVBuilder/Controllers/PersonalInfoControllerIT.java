@@ -39,7 +39,7 @@ public class PersonalInfoControllerIT {
                 andExpect(MockMvcResultMatchers.jsonPath("$.id").value(personalInfo.getId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(personalInfo.getName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(personalInfo.getSurname()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBorn()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBirth()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBirth().toString()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInfo.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInfo.getAboutMe()));
@@ -64,7 +64,7 @@ public class PersonalInfoControllerIT {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(personalInfo.getId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(personalInfo.getName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.surname").value(personalInfo.getSurname()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBorn()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.countryOfBorn").value(personalInfo.getCountryOfBirth()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.dateOfBorn").value(personalInfo.getDateOfBirth().toString()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.age").value(personalInfo.getAge()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.aboutMe").value(personalInfo.getAboutMe()));

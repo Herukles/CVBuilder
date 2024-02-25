@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,9 +44,9 @@ public class PersonalInfoController {
     }
 
     @PostMapping(path = "/create")
-    public ResponseEntity<PersonalInfo> postPersonalInfo(PersonalInfo personalInfo) {
+    public ModelAndView postPersonalInfo(PersonalInfo personalInfo) {
         personalInfoService.create(personalInfo);
-        return new ResponseEntity<>(personalInfo,HttpStatus.CREATED);
+        return new ModelAndView("redirect:/home/education");
     }
 
     // CVform page

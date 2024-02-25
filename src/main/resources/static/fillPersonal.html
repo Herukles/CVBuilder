@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<p>please fill form with your data: </p>
+<form th:action="@{/personal/create}" th:object="${personalInfo}" method="post">
+    <div>
+        <label>name:</label>
+        <input type="text" th:field="*{name}" placeholder="enter name">
+    </div>
+    <br>
+    <div>
+        <label>surname:</label>
+        <input type="text" th:field="*{surname}" placeholder="enter surname">
+    </div>
+    <br>
+    <div>
+        <label>age:</label>
+        <input type="number" th:field="*{age}" placeholder="enter age">
+    </div>
+    <br>
+    <div>
+        <label>countryOfBirth:</label>
+        <input type="text" th:field="*{countryOfBirth}" placeholder="enter country where u been born">
+    </div>
+    <br>
+    <div>
+        <label>dateOfBirth:</label>
+        <input type="date" th:field="*{dateOfBirth}" placeholder="enter date of birth">
+    </div>
+    <div>
+        <label>about me:</label>
+        <input type="text" th:field="*{aboutMe}" placeholder="about me">
+    </div>
+
+    <input href="education" type="submit" value="Submit" />
+</form>
+    <button type="button" href="/">reset</button>
+</body>
+</html>

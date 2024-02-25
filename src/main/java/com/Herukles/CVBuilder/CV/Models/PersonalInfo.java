@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Component
 public class PersonalInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,12 +25,13 @@ public class PersonalInfo {
 
     private String name;
     private String surname;
-    private String countryOfBorn;
+    private int age;
+    private String countryOfBirth;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
 
-    private int age;
+
     private String aboutMe;
 
 
