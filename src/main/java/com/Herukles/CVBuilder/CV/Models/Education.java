@@ -1,11 +1,11 @@
 package com.Herukles.CVBuilder.CV.Models;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
 @Data
@@ -14,8 +14,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Education {
+
     String nameOfInstitution;
-    LocalDate EducationDateStart;
-    LocalDate EducationDateEnd;
+    LocalDate educationDateStart;
+    LocalDate educationDateEnd;
 }

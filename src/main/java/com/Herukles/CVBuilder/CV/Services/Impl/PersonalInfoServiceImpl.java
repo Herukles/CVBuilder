@@ -2,7 +2,7 @@ package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
-import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
+import com.Herukles.CVBuilder.CV.Repositories.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +45,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
                     .id(personalInfo.getId())
                     .name(personalInfo.getName())
                     .surname(personalInfo.getSurname())
-                    .countryOfBorn(personalInfo.getCountryOfBorn())
+                    .countryOfBirth(personalInfo.getCountryOfBirth())
                     .dateOfBirth(personalInfo.getDateOfBirth())
                     .age(personalInfo.getAge())
                     .aboutMe(personalInfo.getAboutMe())
@@ -58,7 +58,7 @@ public class PersonalInfoServiceImpl implements PersonalInfoService {
                 .id(personalInfoEntity.getId())
                 .name(personalInfoEntity.getName())
                 .surname(personalInfoEntity.getSurname())
-                .countryOfBorn(personalInfoEntity.getCountryOfBorn())
+                .countryOfBirth(personalInfoEntity.getCountryOfBirth())
                 .dateOfBirth(personalInfoEntity.getDateOfBirth())
                 .age(personalInfoEntity.getAge())
                 .aboutMe(personalInfoEntity.getAboutMe())

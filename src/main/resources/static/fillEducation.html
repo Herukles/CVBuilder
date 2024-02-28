@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Education Fields</title>
+</head>
+<body>
+
+<h2>Add Education Fields</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th> nameOfInstitution </th>
+        <th> dateStart </th>
+        <th> dateEnd </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${educationList.empty}" > <td colspan="3">No education Fields in obj</td></tr>
+        <tr th:each="edu : ${educationList}">
+            <td><span th:text="${edu.nameOfInstitution}"> Name of Institution </span></td>
+            <td><span th:text="${edu.educationDateStart}"> started:  </span></td>
+            <td><span th:text="${edu.educationDateEnd}"> ended:  </span></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<form th:action="@{/CV/addEducationToCV}" method="post" th:object="${educationList}">
+    <div th:each="education : *{educationList}">
+        <div>
+<!--            <label th:text="'Education ' + ${iterStat.index + 1}"></label>-->
+            <div>
+                <label>Name:</label>
+                <label>
+                    <input type="text" th:field="*{education.nameOfInstitution}" required>
+                </label>
+            </div>
+            <div>
+                <label>Start Date:</label>
+                <input type="date" th:field="*{education.educationDateStart}" required>
+            </div>
+            <div>
+                <label>End Date:</label>
+                <input type="date" th:field="*{education.educationDateEnd}" required>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="button" onclick="addEducation()">Add Education Field</button>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<script th:inline="javascript">
+    function addEducation() {
+        var educationTemplate = /*[[#{education.field}]]*/ '';
+        var index = document.querySelectorAll('[id^="education"]').length + 1;
+
+        var newEducation = educationTemplate.replace(/(\[#lists.get\(education\)\])/g, '[$1' + index + ']');
+        var div = document.createElement('div');
+        div.innerHTML = newEducation;
+
+        document.querySelector('form').insertBefore(div, document.querySelector('button[type="submit"]'));
+    }
+</script>
+
+</body>
+</html>

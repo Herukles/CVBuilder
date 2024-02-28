@@ -11,8 +11,5 @@ public class CvBuilderApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(CvBuilderApplication.class, args);
-
-
-
 	}
 }

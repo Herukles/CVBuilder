@@ -1,11 +1,12 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.*;
-import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
-import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
-import com.Herukles.CVBuilder.CV.Repository.CVRepository;
+import com.Herukles.CVBuilder.CV.Models.Entities.*;
+import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class CVServiceImpl implements CVService {
     private final CVRepository cvRepository;
 
@@ -20,6 +22,8 @@ public class CVServiceImpl implements CVService {
     public CVServiceImpl(CVRepository cvRepository) {
         this.cvRepository = cvRepository;
     }
+
+
 
     @Override
     public CV create(final CV cv) {
@@ -40,77 +44,98 @@ public class CVServiceImpl implements CVService {
         return foundCVs.stream().map(cv -> cvEntityToCV(cv)).collect(Collectors.toList());
     }
 
-    private CVEntity cvToCVEntity(CV cv) {
-        Iterator<Experience> expIterator = cv.getWorkExperienceList().iterator();
-        Iterator<Education> eduIterator = cv.getEducationList().iterator();
+    @Override
+    public void setEducationListById(@PathVariable long id, List<EducationEntity> educationEntities) {
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
+        if(foundCV.isPresent()) {
+            CVEntity cvEntity = foundCV.get();
+            cvEntity.setEducationEntityList(educationEntities);
+            cvRepository.save(cvEntity);
+        }
+    }
 
-        List<Experience> experiences = new ArrayList<>();
-        List<Education> educations = new ArrayList<>();
+    @Override
+    public void addEducationToList(@PathVariable long id, EducationEntity educationEntity) {
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
+        if(foundCV.isPresent()) {
+            CVEntity cvEntity = foundCV.get();
+            cvEntity.getEducationEntityList().add(educationEntity);
+            cvRepository.save(cvEntity);
+        }
+    }
+
+    // there will be more methods like above, retreat CV by id from DB, set fields provided by parameter, and save it.
+
+    private CVEntity cvToCVEntity(CV cv) {
+
+
+        List<ExperienceEntity> experienceEntities = new ArrayList<>();
+        List<EducationEntity> educationEntities = new ArrayList<>();
 
         PersonalInfoEntity personal = PersonalInfoEntity.builder()
                 .name(cv.getPerson().getName())
                 .surname(cv.getPerson().getSurname())
                 .age(cv.getPerson().getAge())
-                .countryOfBorn(cv.getPerson().getCountryOfBorn())
+                .countryOfBirth(cv.getPerson().getCountryOfBirth())
                 .dateOfBirth(cv.getPerson().getDateOfBirth())
                 .aboutMe(cv.getPerson().getAboutMe()).build();
 
-        ContactInfo contactInfo = ContactInfo.builder()
+        ContactInfoEntity contactInfoEntity = ContactInfoEntity.builder()
                 .email(cv.getContactMe().getEmail())
                 .website(cv.getContactMe().getWebsite())
                 .phoneNumber(cv.getContactMe().getPhoneNumber()).build();
 
-
+        Iterator<ExperienceEntity> expIterator = cv.getWorkExperienceListEntity().iterator();
+        Iterator<EducationEntity> eduIterator = cv.getEducationEntityList().iterator();
         while(expIterator.hasNext()) {
-            Experience next = expIterator.next();
-            experiences.add(Experience.builder()
+            ExperienceEntity next = expIterator.next();
+            experienceEntities.add(ExperienceEntity.builder()
                     .dateStart(next.getDateStart())
                     .dateEnd(next.getDateEnd())
                     .companyName(next.getCompanyName())
                     .description(next.getDescription()).build());
-
         }
         while(eduIterator.hasNext()) {
-            Education next = eduIterator.next();
-            educations.add(
-                    Education.builder()
+            EducationEntity next = eduIterator.next();
+            educationEntities.add(
+                    EducationEntity.builder()
                             .nameOfInstitution(next.getNameOfInstitution())
-                            .EducationDateStart(next.getEducationDateStart())
-                            .EducationDateEnd(next.getEducationDateEnd()).build()
+                            .educationDateStart(next.getEducationDateStart())
+                            .educationDateEnd(next.getEducationDateEnd()).build()
             );
         }
         return CVEntity.builder()
                 .person(personal)
-                .contactMe(contactInfo)
-                .educationList(educations)
-                .workExperienceList(experiences)
+                .contactMe(contactInfoEntity)
+                .educationEntityList(educationEntities)
+                .workExperienceListEntity(experienceEntities)
                 .build();
     }
 
     private CV cvEntityToCV(CVEntity cvEntity) {
-        Iterator<Experience> expIterator = cvEntity.getWorkExperienceList().iterator();
-        Iterator<Education> eduIterator = cvEntity.getEducationList().iterator();
+        Iterator<ExperienceEntity> expIterator = cvEntity.getWorkExperienceListEntity().iterator();
+        Iterator<EducationEntity> eduIterator = cvEntity.getEducationEntityList().iterator();
 
-        List<Experience> experiences = new ArrayList<>();
-        List<Education> educations = new ArrayList<>();
+        List<ExperienceEntity> experienceEntities = new ArrayList<>();
+        List<EducationEntity> educationEntities = new ArrayList<>();
 
         PersonalInfoEntity personal = PersonalInfoEntity.builder()
                 .name(cvEntity.getPerson().getName())
                 .surname(cvEntity.getPerson().getSurname())
                 .age(cvEntity.getPerson().getAge())
-                .countryOfBorn(cvEntity.getPerson().getCountryOfBorn())
+                .countryOfBirth(cvEntity.getPerson().getCountryOfBirth())
                 .dateOfBirth(cvEntity.getPerson().getDateOfBirth())
                 .aboutMe(cvEntity.getPerson().getAboutMe()).build();
 
-        ContactInfo contactInfo = ContactInfo.builder()
+        ContactInfoEntity contactInfoEntity = ContactInfoEntity.builder()
                 .email(cvEntity.getContactMe().getEmail())
                 .website(cvEntity.getContactMe().getWebsite())
                 .phoneNumber(cvEntity.getContactMe().getPhoneNumber()).build();
 
 
         while(expIterator.hasNext()) {
-            Experience next = expIterator.next();
-            experiences.add(Experience.builder()
+            ExperienceEntity next = expIterator.next();
+            experienceEntities.add(ExperienceEntity.builder()
                     .dateStart(next.getDateStart())
                     .dateEnd(next.getDateEnd())
                     .companyName(next.getCompanyName())
@@ -118,19 +143,19 @@ public class CVServiceImpl implements CVService {
 
         }
         while(eduIterator.hasNext()) {
-            Education next = eduIterator.next();
-            educations.add(
-                    Education.builder()
+            EducationEntity next = eduIterator.next();
+            educationEntities.add(
+                    EducationEntity.builder()
                             .nameOfInstitution(next.getNameOfInstitution())
-                            .EducationDateStart(next.getEducationDateStart())
-                            .EducationDateEnd(next.getEducationDateEnd()).build()
+                            .educationDateStart(next.getEducationDateStart())
+                            .educationDateEnd(next.getEducationDateEnd()).build()
             );
         }
         return CV.builder()
                 .person(personal)
-                .educationList(educations)
-                .workExperienceList(experiences)
-                .contactMe(contactInfo).build();
+                .educationEntityList(educationEntities)
+                .workExperienceListEntity(experienceEntities)
+                .contactMe(contactInfoEntity).build();
     }
 
 

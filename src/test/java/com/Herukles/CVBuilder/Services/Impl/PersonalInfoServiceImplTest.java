@@ -2,7 +2,7 @@ package com.Herukles.CVBuilder.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
-import com.Herukles.CVBuilder.CV.Repository.PersonalInfoRepository;
+import com.Herukles.CVBuilder.CV.Repositories.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.Impl.PersonalInfoServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
