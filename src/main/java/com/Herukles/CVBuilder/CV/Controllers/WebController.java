@@ -47,28 +47,14 @@ public class WebController {
 
     @GetMapping(path="/home/education")
     public String fillEducation(Model model) {
-        EducationEntity edu = new EducationEntity(1, null, "polibudda", LocalDate.of(2020,1,1),LocalDate.of(2023,1,1));
-        cv.setEducationEntityList(List.of(edu));
-        List<EducationEntity> educations = new ArrayList<>();
-        cvEntity.setEducationEntityList(educations);
         model.addAttribute("educationList", cvEntity.getEducationEntityList());
         //cv.getEducationEntityList().getFirst().getNameOfInstitution()
-        return "fillEducation";
+        return "education";
     }
-
-    @GetMapping(path="/home/experience")
-    public String fillExperience(Model model) {
-        model.addAttribute("experience", cv.getWorkExperienceListEntity());
-        return "fillExperience";
+    @GetMapping(path="/home/educationForm")
+    public String educationForm(Model model) {
+        model.addAttribute("education", new Education());
+        return "educationForm";
     }
-
-//    @GetMapping(path="/home/experience")
-//    public String fillContactMe(Model model) {
-//        model.addAttribute("contactMe", cvEntity.getContactMe());
-//        return "fillContactMe";
-//    }
-
-
-
 
 }

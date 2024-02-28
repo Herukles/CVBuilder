@@ -13,6 +13,6 @@ public interface CVService {
     Optional<CV> findById(Long id);
     List<CV> listOfCV();
 
-    void setEducationListById(@PathVariable long id, List<EducationEntity> educationEntities);
-    void addEducationToList(@PathVariable long id, EducationEntity educationEntity);
+//    void setEducationListById(@PathVariable long id, List<EducationEntity> educationEntities);
+//    void addEducationToList(@PathVariable long id, EducationEntity educationEntity);
 }

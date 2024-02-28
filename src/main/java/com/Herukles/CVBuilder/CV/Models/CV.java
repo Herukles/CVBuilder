@@ -16,20 +16,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@ToString
-@Scope("prototype")
 @Data
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Builder
 public class CV {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 
     @Autowired
     private PersonalInfoEntity person;

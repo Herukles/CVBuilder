@@ -34,16 +34,16 @@ public class CVController {
         return new ResponseEntity<CV>(savedCV, HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/addEducationListToCV")
+    @PostMapping(path = "/addEducationListToCV")
     public ModelAndView addEducationListToCV(List<EducationEntity> educationEntities) {
         cvService.setEducationListById(cvEntity.getId(), educationEntities);
         return new ModelAndView("redirect:/home/fillExperience");
     }
 
-    @PutMapping(path = "/addEducationToList")
+    @PostMapping(path = "/addEducationToList")
     public ModelAndView addEduToList(EducationEntity educationEntity) {
         cvService.addEducationToList(cvEntity.getId(),educationEntity);
-        return new ModelAndView("redirect:/home/fillEducation");
+        return new ModelAndView("redirect:/home/education");
     }
 
     @GetMapping(path="/{id}")
