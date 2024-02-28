@@ -8,6 +8,11 @@ import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
+
+import static com.Herukles.CVBuilder.CV.Converters.CVConverter.cvToCVEntity;
+import static com.Herukles.CVBuilder.CV.Converters.CVConverter.cvEntityToCV;
+
 public class CVServiceImpl implements CVService {
 
     CVRepository cvRepository;
@@ -18,11 +23,22 @@ public class CVServiceImpl implements CVService {
     }
 
     @Override
-    public CV save(CV cv) {
-        PersonalInfo personalInfo = cv.getPerson();
-        return null;
+    public String save(CV cv) {
+        CVEntity cvEntity = cvToCVEntity(cv);
+        cvRepository.save(cvEntity);
+        return "saved successfully";
     }
 
+    @Override
+    public Optional<CV> findById(Long id) {
+        Optional<CVEntity> foundCVEntity = cvRepository.findById(id);
+        return foundCVEntity.map(cvEntity -> cvEntityToCV(cvEntity));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        cvRepository.deleteById(id);
+    }
 
 
 }

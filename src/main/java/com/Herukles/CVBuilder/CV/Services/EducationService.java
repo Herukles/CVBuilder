@@ -7,4 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface EducationService {
     String save(Education education);
     Education findById(@RequestParam Long id);
+
+    void deleteById(@RequestParam Long id);
 }

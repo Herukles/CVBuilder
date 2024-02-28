@@ -7,4 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ExperienceService {
     String save(Experience experience);
     Experience findById(@RequestParam Long id);
+
+    void deleteById(@RequestParam Long id);
 }
