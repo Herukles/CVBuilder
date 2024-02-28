@@ -26,4 +26,6 @@ public class PersonalInfo {
     private String countryOfBirth;
     private LocalDate dateOfBirth;
     private String aboutMe;
+
+    CV cv;
 }

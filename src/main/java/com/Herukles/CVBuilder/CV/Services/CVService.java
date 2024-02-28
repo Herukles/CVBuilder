@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CVService {
-    CV save(CV cv);
+    String save(CV cv);
+    Optional<CV> findById(@RequestParam Long id);
 
-    CV findById(@RequestParam Long id);
+    void deleteById(@RequestParam Long id);
 }
