@@ -17,26 +17,22 @@ import java.util.List;
 @Builder
 @Entity
 public class CVEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne(mappedBy = "cvEntity")
+    @OneToOne(mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private PersonalInfoEntity person;
 
-    @OneToMany(mappedBy = "cvEntity")
-    private List<EducationEntity> educationEntityList;
-    @OneToMany(mappedBy = "cvEntity")
-    private List<ExperienceEntity> workExperienceListEntity;
-
-    @OneToOne(mappedBy = "cvEntity")
+    @OneToOne(mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private ContactInfoEntity contactMe;
 
-    public void addEduToList(EducationEntity educationEntity) {
-        educationEntityList.add(educationEntity);
-    }
-    public EducationEntity getEduFromListByID(int id) {
-        return educationEntityList.get(id);
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    private List<EducationEntity> educationEntityList;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    private List<ExperienceEntity> workExperienceListEntity;
 
 }

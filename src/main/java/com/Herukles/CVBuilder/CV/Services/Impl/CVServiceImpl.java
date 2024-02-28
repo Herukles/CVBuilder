@@ -44,26 +44,6 @@ public class CVServiceImpl implements CVService {
         return foundCVs.stream().map(cv -> cvEntityToCV(cv)).collect(Collectors.toList());
     }
 
-//    @Override
-//    public void setEducationListById(@PathVariable long id, List<EducationEntity> educationEntities) {
-//        Optional<CVEntity> foundCV = cvRepository.findById(id);
-//        if(foundCV.isPresent()) {
-//            CVEntity cvEntity = foundCV.get();
-//            cvEntity.setEducationEntityList(educationEntities);
-//            cvRepository.save(cvEntity);
-//        }
-//    }
-//
-//    @Override
-//    public void addEducationToList(@PathVariable long id, EducationEntity educationEntity) {
-//        Optional<CVEntity> foundCV = cvRepository.findById(id);
-//        if(foundCV.isPresent()) {
-//            CVEntity cvEntity = foundCV.get();
-//            cvEntity.getEducationEntityList().add(educationEntity);
-//            cvRepository.save(cvEntity);
-//        }
-//    }
-
     public Optional<List<EducationEntity>> getEducationList(@PathVariable long id) {
         Optional<CVEntity> foundCV = cvRepository.findById(id);
 

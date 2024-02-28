@@ -12,9 +12,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContactInfo {
-
+    private long id;
     private String phoneNumber;
     private String email;
     private String website;
-
 }

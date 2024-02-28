@@ -6,10 +6,9 @@ import lombok.*;
 import org.springframework.stereotype.Component;
 
 
-@Setter
+
 @Data
 @Component
-@Getter
 @Builder
 @Entity
 @NoArgsConstructor
@@ -17,10 +16,13 @@ import org.springframework.stereotype.Component;
 public class ContactInfoEntity {
 
     @Id
+    @Column(name = "contactInfo_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @OneToOne
+    @MapsId
+    @JoinColumn(name="contactInfo_ID")
     CVEntity cvEntity;
 
     private String phoneNumber;

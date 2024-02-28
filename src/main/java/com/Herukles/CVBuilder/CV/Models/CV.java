@@ -23,23 +23,11 @@ import java.util.List;
 @Builder
 public class CV {
 
-    @Autowired
+    private long id;
+
     private PersonalInfoEntity person;
-
-    @Autowired
     private List<EducationEntity> educationEntityList;
-
-    @Autowired
     private List<ExperienceEntity> workExperienceListEntity;
-
-    @Autowired
     private ContactInfoEntity contactMe;
-
-    public void addEduToList(EducationEntity educationEntity) {
-        educationEntityList.add(educationEntity);
-    }
-    public EducationEntity getEduFromListByID(int id) {
-        return educationEntityList.get(id);
-    }
 
 }

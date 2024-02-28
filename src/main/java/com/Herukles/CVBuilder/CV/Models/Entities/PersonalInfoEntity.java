@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @Setter
 public class PersonalInfoEntity {
     @Id
+    @Column(name="personal_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
@@ -30,5 +31,7 @@ public class PersonalInfoEntity {
     private String aboutMe;
 
     @OneToOne
+    @MapsId
+    @JoinColumn(name="personal_ID")
     CVEntity cvEntity;
 }

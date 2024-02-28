@@ -7,6 +7,8 @@ import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Repositories.EducationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
+
 public class EducationService {
     EducationRepository educationRepository;
 
@@ -15,9 +17,28 @@ public class EducationService {
         this.educationRepository = educationRepository;
     }
 
-    public EducationEntity create(final EducationEntity education) {
-        return educationRepository.save(education);
+    public EducationEntity create(final Education education) {
+        EducationEntity educationEntity = educationModelToEntity(education);
+        return educationRepository.save(educationEntity);
     }
 
-    
+    public Optional<Education> findById(final long id) {
+        Optional<Education> education  = educationRepository.findById(id).map(educationEntity -> educationEntityToModel(educationEntity));
+        return education;
+    }
+
+    private EducationEntity educationModelToEntity(Education education) {
+        return EducationEntity.builder()
+                .nameOfInstitution(education.getNameOfInstitution())
+                .educationDateStart(education.getEducationDateStart())
+                .educationDateEnd(education.getEducationDateEnd())
+                .build();
+    }
+    private Education educationEntityToModel(EducationEntity educationEntity) {
+        return Education.builder()
+                .nameOfInstitution(educationEntity.getNameOfInstitution())
+                .educationDateStart(educationEntity.getEducationDateStart())
+                .educationDateEnd(educationEntity.getEducationDateEnd())
+                .build();
+    }
 }

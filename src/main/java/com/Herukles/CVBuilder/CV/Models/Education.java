@@ -18,6 +18,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Education {
 
+    private long id;
+
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;
