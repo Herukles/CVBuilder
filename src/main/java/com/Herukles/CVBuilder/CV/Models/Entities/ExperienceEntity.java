@@ -21,8 +21,11 @@ public class ExperienceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @ManyToOne()
-    CVEntity cvEntity;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cv_id")
+    private CVEntity cvEntity;
+
     LocalDate dateStart;
     LocalDate dateEnd;
     String companyName;

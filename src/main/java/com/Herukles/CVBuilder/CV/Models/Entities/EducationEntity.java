@@ -21,8 +21,9 @@ public class EducationEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToOne()
-    CVEntity cvEntity;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cv_id")
+    private CVEntity cvEntity;
 
     String nameOfInstitution;
     LocalDate educationDateStart;

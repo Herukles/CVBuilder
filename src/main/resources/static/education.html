@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Education Fields</title>
+</head>
+<body>
+
+<h2>Add Education Fields</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th> nameOfInstitution </th>
+        <th> dateStart </th>
+        <th> dateEnd </th>
+    </tr>
+    </thead>
+    <tbody>
+<!--        <tr th:if="${educationList.empty}" > <td colspan="3">No education Fields in obj</td></tr>-->
+        <tr th:each="edu : ${educationList}">
+            <td><span th:text="${edu.nameOfInstitution}"> Name of Institution </span></td>
+            <td><span th:text="${edu.educationDateStart}"> started:  </span></td>
+            <td><span th:text="${edu.educationDateEnd}"> ended:  </span></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<button> <a href="/home/educationForm">add new Education field </a> </button>
+
+</body>
+</html>

@@ -16,38 +16,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@ToString
-@Scope("prototype")
 @Data
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Builder
 public class CV {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     @Autowired
-    private PersonalInfoEntity person;
-
+    private PersonalInfo person;
     @Autowired
-    private List<EducationEntity> educationEntityList;
-
+    private ContactInfo contactMe;
     @Autowired
-    private List<ExperienceEntity> workExperienceListEntity;
-
+    private List<Education> educationEntityList;
     @Autowired
-    private ContactInfoEntity contactMe;
-
-    public void addEduToList(EducationEntity educationEntity) {
-        educationEntityList.add(educationEntity);
-    }
-    public EducationEntity getEduFromListByID(int id) {
-        return educationEntityList.get(id);
-    }
-
+    private List<Experience> workExperienceListEntity;
 }

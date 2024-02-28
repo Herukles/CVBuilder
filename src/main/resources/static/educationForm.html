@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>education new form</title>
+</head>
+<body>
+<form th:action="@{/CV/addEducationToList}" th:object="${education}" method="post">
+    <div>
+        <label>education name:</label>
+        <input type="text" th:field="*{nameOfInstitution}" placeholder="enter education">
+    </div>
+    <br>
+    <div>
+        <label>date Start:</label>
+        <input type="date" th:field="*{educationDateStart}" placeholder="enter date">
+    </div>
+    <div>
+        <label>date End:</label>
+        <input type="date" th:field="*{educationDateEnd}" placeholder="enter date">
+    </div>
+
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
