@@ -22,4 +22,6 @@ public class Education {
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;
+
+    CV cv;
 }

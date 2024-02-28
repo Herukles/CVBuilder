@@ -3,6 +3,8 @@ package com.Herukles.CVBuilder.CV.Converters;
 import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 
+
+
 public class PersonalConverter {
     public static PersonalInfoEntity personalToPersonalEntity(PersonalInfo personalInfo) {
         return PersonalInfoEntity.builder()

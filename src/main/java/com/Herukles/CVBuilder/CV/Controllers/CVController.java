@@ -13,46 +13,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/CV/")
 public class CVController {
-//    private final CVService cvService;
-//    private final CVEntity cvEntity;
-//
-//    public CVController(CVService cvService, CVEntity cvEntity) {
-//        this.cvService = cvService;
-//        this.cvEntity = cvEntity;
-//    }
-//
-//    @PutMapping(path = "/{id}")
-//    public ResponseEntity<CV> createCV(
-//            @PathVariable final long id,
-//            @RequestBody final CV cv) {
-//        cv.setId(id);
-//        final CV savedCV = cvService.saveCV(cv);
-//        return new ResponseEntity<CV>(savedCV, HttpStatus.CREATED);
-//    }
-
-//    @PostMapping(path = "/addEducationListToCV")
-//    public ModelAndView addEducationListToCV(List<EducationEntity> educationEntities) {
-//        cvService.setEducationListById(cvEntity.getId(), educationEntities);
-//        return new ModelAndView("redirect:/home/fillExperience");
-//    }
-//
-//    @PostMapping(path = "/addEducationToList")
-//    public ModelAndView addEduToList(EducationEntity educationEntity) {
-//        cvService.addEducationToList(cvEntity.getId(),educationEntity);
-//        return new ModelAndView("redirect:/home/education");
-//    }
-
-//    @GetMapping(path="/{id}")
-//    public ResponseEntity<CV> retrieveCVsById(@PathVariable final long id) {
-//        Optional<CV> foundCV = cvService.findById(id);
-//        return foundCV.map(cv -> new ResponseEntity<CV>(cv, HttpStatus.OK))
-//                .orElse(new ResponseEntity<CV>(HttpStatus.NOT_FOUND));
-//    }
-//
-//    @GetMapping(path="/all")
-//    public ResponseEntity<List<CV>> allCVsList() {
-//        return new ResponseEntity<List<CV>>(cvService.listOfCV(), HttpStatus.OK);
-//    }
 
     
 }

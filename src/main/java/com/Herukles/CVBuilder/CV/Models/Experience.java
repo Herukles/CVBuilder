@@ -23,4 +23,6 @@ public class Experience {
     LocalDate dateEnd;
     String companyName;
     String description;
+
+    CV cv;
 }

@@ -19,6 +19,7 @@ import static  com.Herukles.CVBuilder.CV.Converters.EducationConverter.education
 import static  com.Herukles.CVBuilder.CV.Converters.ExperienceConverter.experienceEntityToExperience;
 import static  com.Herukles.CVBuilder.CV.Converters.ExperienceConverter.experienceToExperienceEntity;
 
+
 public class CVConverter {
     public static CV cvEntityToCV(CVEntity cvEntity) {
 
