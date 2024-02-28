@@ -1,43 +1,73 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Form</title>
+    <title>Add Education Fields</title>
 </head>
 <body>
-<p>Education</p>
-<form th:action="@{/personal/create}" th:object="${personalInfo}" method="post">
-    <div>
-        <label>name:</label>
-        <input type="text" th:field="*{name}" placeholder="enter name">
-    </div>
-    <br>
-    <div>
-        <label>surname:</label>
-        <input type="text" th:field="*{surname}" placeholder="enter surname">
-    </div>
-    <br>
-    <div>
-        <label>age:</label>
-        <input type="number" th:field="*{age}" placeholder="enter age">
-    </div>
-    <br>
-    <div>
-        <label>countryOfBirth:</label>
-        <input type="text" th:field="*{countryOfBirth}" placeholder="enter country where u been born">
-    </div>
-    <br>
-    <div>
-        <label>dateOfBirth:</label>
-        <input type="date" th:field="*{dateOfBirth}" placeholder="enter date of birth">
-    </div>
-    <div>
-        <label>about me:</label>
-        <input type="text" th:field="*{aboutMe}" placeholder="about me">
+
+<h2>Add Education Fields</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th> nameOfInstitution </th>
+        <th> dateStart </th>
+        <th> dateEnd </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${educationList.empty}" > <td colspan="3">No education Fields in obj</td></tr>
+        <tr th:each="edu : ${educationList}">
+            <td><span th:text="${edu.nameOfInstitution}"> Name of Institution </span></td>
+            <td><span th:text="${edu.educationDateStart}"> started:  </span></td>
+            <td><span th:text="${edu.educationDateEnd}"> ended:  </span></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<form th:action="@{/CV/addEducationToCV}" method="post" th:object="${educationList}">
+    <div th:each="education : *{educationList}">
+        <div>
+<!--            <label th:text="'Education ' + ${iterStat.index + 1}"></label>-->
+            <div>
+                <label>Name:</label>
+                <label>
+                    <input type="text" th:field="*{education.nameOfInstitution}" required>
+                </label>
+            </div>
+            <div>
+                <label>Start Date:</label>
+                <input type="date" th:field="*{education.educationDateStart}" required>
+            </div>
+            <div>
+                <label>End Date:</label>
+                <input type="date" th:field="*{education.educationDateEnd}" required>
+            </div>
+        </div>
     </div>
 
+    <div>
+        <button type="button" onclick="addEducation()">Add Education Field</button>
+    </div>
 
+    <div>
+        <button type="submit">Submit</button>
+    </div>
 </form>
+
+<script th:inline="javascript">
+    function addEducation() {
+        var educationTemplate = /*[[#{education.field}]]*/ '';
+        var index = document.querySelectorAll('[id^="education"]').length + 1;
+
+        var newEducation = educationTemplate.replace(/(\[#lists.get\(education\)\])/g, '[$1' + index + ']');
+        var div = document.createElement('div');
+        div.innerHTML = newEducation;
+
+        document.querySelector('form').insertBefore(div, document.querySelector('button[type="submit"]'));
+    }
+</script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -42,6 +43,28 @@ public class CVServiceImpl implements CVService {
         final List<CVEntity> foundCVs = cvRepository.findAll();
         return foundCVs.stream().map(cv -> cvEntityToCV(cv)).collect(Collectors.toList());
     }
+
+    @Override
+    public void setEducationListById(@PathVariable long id, List<EducationEntity> educationEntities) {
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
+        if(foundCV.isPresent()) {
+            CVEntity cvEntity = foundCV.get();
+            cvEntity.setEducationEntityList(educationEntities);
+            cvRepository.save(cvEntity);
+        }
+    }
+
+    @Override
+    public void addEducationToList(@PathVariable long id, EducationEntity educationEntity) {
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
+        if(foundCV.isPresent()) {
+            CVEntity cvEntity = foundCV.get();
+            cvEntity.getEducationEntityList().add(educationEntity);
+            cvRepository.save(cvEntity);
+        }
+    }
+
+    // there will be more methods like above, retreat CV by id from DB, set fields provided by parameter, and save it.
 
     private CVEntity cvToCVEntity(CV cv) {
 

@@ -43,4 +43,11 @@ public class CV {
     @Autowired
     private ContactInfoEntity contactMe;
 
+    public void addEduToList(EducationEntity educationEntity) {
+        educationEntityList.add(educationEntity);
+    }
+    public EducationEntity getEduFromListByID(int id) {
+        return educationEntityList.get(id);
+    }
+
 }

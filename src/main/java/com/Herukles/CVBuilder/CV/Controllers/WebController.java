@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
+import com.Herukles.CVBuilder.CV.Models.CV;
 import com.Herukles.CVBuilder.CV.Models.Education;
 import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
 import com.Herukles.CVBuilder.CV.Models.Entities.ContactInfoEntity;
@@ -11,6 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -18,13 +25,13 @@ public class WebController {
     PersonalInfoService personalInfoService;
     CVEntity cvEntity;
 
-
+    CV cv;
 
     @Autowired
-    public WebController(PersonalInfoService personalInfoService, CVEntity cvEntity) {
+    public WebController(PersonalInfoService personalInfoService, CVEntity cvEntity, CV cv) {
         this.personalInfoService = personalInfoService;
         this.cvEntity = cvEntity;
-
+        this.cv = cv;
     }
 
     @GetMapping(path="/home/")
@@ -34,27 +41,32 @@ public class WebController {
 
     @GetMapping(path="/home/fillPersonal")
     public String fillPersonalInfoSite(Model model) {
-        model.addAttribute("personalInfo", new PersonalInfo());
+        model.addAttribute("personalInfo", cv.getPerson());
         return "fillPersonal";
     }
 
     @GetMapping(path="/home/education")
     public String fillEducation(Model model) {
-        model.addAttribute("education", new Education());
+        EducationEntity edu = new EducationEntity(1, null, "polibudda", LocalDate.of(2020,1,1),LocalDate.of(2023,1,1));
+        cv.setEducationEntityList(List.of(edu));
+        List<EducationEntity> educations = new ArrayList<>();
+        cvEntity.setEducationEntityList(educations);
+        model.addAttribute("educationList", cvEntity.getEducationEntityList());
+        //cv.getEducationEntityList().getFirst().getNameOfInstitution()
         return "fillEducation";
     }
 
     @GetMapping(path="/home/experience")
     public String fillExperience(Model model) {
-        model.addAttribute("experience", new Experience());
+        model.addAttribute("experience", cv.getWorkExperienceListEntity());
         return "fillExperience";
     }
 
-    @GetMapping(path="/home/experience")
-    public String fillContactMe(Model model) {
-        model.addAttribute("contactMe", new ContactInfoEntity());
-        return "fillContactMe";
-    }
+//    @GetMapping(path="/home/experience")
+//    public String fillContactMe(Model model) {
+//        model.addAttribute("contactMe", cvEntity.getContactMe());
+//        return "fillContactMe";
+//    }
 
 
 
