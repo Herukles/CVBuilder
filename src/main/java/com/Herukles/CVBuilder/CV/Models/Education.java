@@ -19,7 +19,6 @@ import java.time.LocalDate;
 public class Education {
 
     private long id;
-
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;

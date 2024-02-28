@@ -24,10 +24,12 @@ import java.util.List;
 public class CV {
 
     private long id;
-    private PersonalInfoEntity person;
-    private ContactInfoEntity contactMe;
-    private List<EducationEntity> educationEntityList;
-    private List<ExperienceEntity> workExperienceListEntity;
-
-
+    @Autowired
+    private PersonalInfo person;
+    @Autowired
+    private ContactInfo contactMe;
+    @Autowired
+    private List<Education> educationEntityList;
+    @Autowired
+    private List<Experience> workExperienceListEntity;
 }

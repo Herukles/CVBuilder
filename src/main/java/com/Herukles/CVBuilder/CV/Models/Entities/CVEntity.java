@@ -32,6 +32,7 @@ public class CVEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
     private List<EducationEntity> educationEntityList;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
     private List<ExperienceEntity> workExperienceListEntity;
 
