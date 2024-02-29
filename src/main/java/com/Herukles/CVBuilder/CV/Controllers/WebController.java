@@ -1,7 +1,11 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
-//@Controller
-//public class WebController {
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class WebController {
 //
 //    PersonalInfoService personalInfoService;
 //    CVEntity cvEntity;
@@ -15,10 +19,11 @@ package com.Herukles.CVBuilder.CV.Controllers;
 //        this.cv = cv;
 //    }
 //
-//    @GetMapping(path="/home/")
-//    public String mainPage(Model model) {
-//        return "home";
-//    }
+
+    @GetMapping(path="/home/")
+    public String mainPage(Model model) {
+        return "home";
+    }}
 //
 //    @GetMapping(path="/home/fillPersonal")
 //    public String fillPersonalInfoSite(Model model) {

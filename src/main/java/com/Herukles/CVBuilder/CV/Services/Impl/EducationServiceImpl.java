@@ -6,6 +6,7 @@ import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Repositories.EducationRepository;
 import com.Herukles.CVBuilder.CV.Services.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import java.util.Optional;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 import static com.Herukles.CVBuilder.CV.Converters.EducationConverter.*;
 
+@Service
 public class EducationServiceImpl implements EducationService {
 
     CVRepository cvRepository;
@@ -39,6 +41,11 @@ public class EducationServiceImpl implements EducationService {
     @Override
     public Optional<Education> findById(Long id) {
         return educationRepository.findById(id).map(education -> educationEntityToEducation(education));
+    }
+
+    @Override
+    public List<Education> findAll() {
+        return educationRepository.findAll().stream().map(educationEntity -> educationEntityToEducation(educationEntity)).toList();
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Repositories.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.text.html.Option;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 import static com.Herukles.CVBuilder.CV.Converters.PersonalConverter.*;
 
+@Service
 public class PersonalServiceImpl implements PersonalService {
 
     CVRepository cvRepository;

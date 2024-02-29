@@ -14,22 +14,23 @@ import org.springframework.context.annotation.Scope;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Component
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class CV {
+    public CV() {
+        this.setEducationEntityList(new ArrayList<>());
+        this.setWorkExperienceListEntity(new ArrayList<>());
+    }
 
     private long id;
-    @Autowired
+
     private PersonalInfo person;
-    @Autowired
     private ContactInfo contactMe;
-    @Autowired
     private List<Education> educationEntityList;
-    @Autowired
     private List<Experience> workExperienceListEntity;
 }

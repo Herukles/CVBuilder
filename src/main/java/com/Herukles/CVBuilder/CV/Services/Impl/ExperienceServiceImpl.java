@@ -7,13 +7,16 @@ import com.Herukles.CVBuilder.CV.Repositories.ExperienceRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import com.Herukles.CVBuilder.CV.Services.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
+import static com.Herukles.CVBuilder.CV.Converters.EducationConverter.educationEntityToEducation;
 import static com.Herukles.CVBuilder.CV.Converters.ExperienceConverter.*;
 
+@Service
 public class ExperienceServiceImpl implements ExperienceService {
     CVRepository cvRepository;
     ExperienceRepository experienceRepository;
@@ -40,6 +43,11 @@ public class ExperienceServiceImpl implements ExperienceService {
     @Override
     public Optional<Experience> findById(Long id) {
         return experienceRepository.findById(id).map(experience -> experienceEntityToExperience(experience));
+    }
+
+    @Override
+    public List<Experience> findAll() {
+        return experienceRepository.findAll().stream().map(experienceEntity -> experienceEntityToExperience(experienceEntity)).toList();
     }
 
     @Override

@@ -7,12 +7,14 @@ import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.cvToCVEntity;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.cvEntityToCV;
 
+@Service
 public class CVServiceImpl implements CVService {
 
     CVRepository cvRepository;

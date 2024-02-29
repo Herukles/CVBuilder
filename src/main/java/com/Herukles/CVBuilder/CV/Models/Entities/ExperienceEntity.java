@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Component
 @Data
-@Scope("prototype")
 @Getter
 @Setter
 @Builder

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @ToString
-@Scope("prototype")
 @Data
 @Component
 @NoArgsConstructor
