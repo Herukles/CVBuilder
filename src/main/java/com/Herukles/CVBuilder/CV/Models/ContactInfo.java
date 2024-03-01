@@ -13,7 +13,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class ContactInfo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String phoneNumber;
     private String email;
     private String website;

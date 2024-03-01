@@ -19,7 +19,11 @@ import java.time.LocalDate;
 @Component
 public class PersonalInfo {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
     private String surname;
     private int age;

@@ -18,7 +18,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Experience {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     LocalDate dateStart;
     LocalDate dateEnd;
     String companyName;

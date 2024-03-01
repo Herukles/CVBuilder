@@ -21,9 +21,12 @@ import java.util.Optional;
 public class CVController {
     private final CVService cvService;
 
+    private final CV cv;
+
     @Autowired
-    public CVController(CVService cvService) {
+    public CVController(CVService cvService, CV cv) {
         this.cvService = cvService;
+        this.cv = cv;
     }
 
     @PostMapping(path="/create")
@@ -34,6 +37,8 @@ public class CVController {
                 .workExperienceListEntity(cv.getWorkExperienceListEntity())
                 .educationEntityList(cv.getEducationEntityList())
                 .build();
+
+        
         cvService.save(cvTMP);
     }
 

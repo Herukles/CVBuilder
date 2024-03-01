@@ -6,37 +6,43 @@
 </head>
 <body>
 <p>please fill form with your data: </p>
-<form th:action="@{/personal/create}" th:object="${personalInfo}" method="post">
+<form th:action="@{personal/save}" th:object="${personalInfo}" method="post">
     <div>
-        <label>name:</label>
+        <label>name:
         <input type="text" th:field="*{name}" placeholder="enter name">
+        </label>
     </div>
     <br>
     <div>
-        <label>surname:</label>
+        <label>surname:
         <input type="text" th:field="*{surname}" placeholder="enter surname">
+        </label>
     </div>
     <br>
     <div>
-        <label>age:</label>
+        <label>age:
         <input type="number" th:field="*{age}" placeholder="enter age">
+        </label>
     </div>
     <br>
     <div>
-        <label>countryOfBirth:</label>
+        <label>countryOfBirth:
         <input type="text" th:field="*{countryOfBirth}" placeholder="enter country where u been born">
+        </label>
     </div>
     <br>
     <div>
-        <label>dateOfBirth:</label>
+        <label>dateOfBirth:
         <input type="date" th:field="*{dateOfBirth}" placeholder="enter date of birth">
+        </label>
     </div>
     <div>
-        <label>about me:</label>
+        <label>about me:
         <input type="text" th:field="*{aboutMe}" placeholder="about me">
+        </label>
     </div>
 
-    <input href="education" type="submit" value="Submit" />
+    <input type="submit" value="Submit" />
 </form>
 
 </body>

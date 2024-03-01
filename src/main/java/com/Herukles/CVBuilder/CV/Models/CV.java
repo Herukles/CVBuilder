@@ -20,17 +20,18 @@ import java.util.List;
 @Data
 @Component
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class CV {
-    public CV() {
-        this.setEducationEntityList(new ArrayList<>());
-        this.setWorkExperienceListEntity(new ArrayList<>());
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @Autowired
     private PersonalInfo person;
+    @Autowired
     private ContactInfo contactMe;
+    @Autowired
     private List<Education> educationEntityList;
+    @Autowired
     private List<Experience> workExperienceListEntity;
 }

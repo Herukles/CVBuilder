@@ -18,7 +18,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Education {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;
