@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 public interface PersonalService {
-    String save(@RequestParam Long id, PersonalInfo personalInfo);
-    Optional<PersonalInfo> findById(@RequestParam Long id);
-    void deleteById(@RequestParam Long id);
+    Optional<PersonalInfo> saveWithCVId(Long id, PersonalInfo personalInfo);
+    Optional<PersonalInfo> findById(Long id);
+    void deleteById(Long id);
 }

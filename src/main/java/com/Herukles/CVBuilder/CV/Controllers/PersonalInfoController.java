@@ -4,6 +4,7 @@ import com.Herukles.CVBuilder.CV.Models.CV;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Services.Impl.CVServiceImpl;
 import com.Herukles.CVBuilder.CV.Services.Impl.PersonalServiceImpl;
+import com.Herukles.CVBuilder.CV.Services.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,8 @@ import java.util.Optional;
 
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 
-@Controller
-@RequestMapping("home/personal/")
+@RestController
+@RequestMapping("CV/personal")
 public class PersonalInfoController {
     private final CVServiceImpl cvService;
     private final PersonalServiceImpl personalService;
@@ -29,17 +30,16 @@ public class PersonalInfoController {
         this.cv = cv;
     }
 
-    @PostMapping(value="/save")
-    public String savePersonal(@RequestBody PersonalInfo personalInfo) {
-        Optional<CV> foundCV = cvService.findById(cv.getId());
+    @PostMapping(value="{id}/save")
+    public Optional<PersonalInfo> savePersonal(@RequestParam(name = "id") long id, @RequestBody PersonalInfo personalInfo) {
+        Optional<CV> foundCV = cvService.findById(id);
         if(foundCV.isPresent()){
             CV cvTmp = foundCV.get();
             personalInfo.setCv(cvTmp);
             cvTmp.setPerson(personalInfo);
-            cvService.save(cvTmp);
+            personalService.saveWithCVId(foundCV.get().getId(), personalInfo);
+            return Optional.ofNullable(personalInfo);
         }
-        return "created";
+        else {return Optional.empty();}
     }
-
-
 }

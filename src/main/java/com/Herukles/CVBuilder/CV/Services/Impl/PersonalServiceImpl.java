@@ -30,15 +30,19 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public String save(@RequestParam Long id, PersonalInfo personalInfo) {
+    public Optional<PersonalInfo> saveWithCVId(Long id, PersonalInfo personalInfo) {
         Optional<CV> foundCV = cvRepository.findById(id).map(cvEntity -> cvEntityToCV(cvEntity));
+        CV cv;
         if(foundCV.isPresent()) {
-            CV cv = foundCV.get();
+            cv = foundCV.get();
             personalInfo.setCv(cv);
             cv.setPerson(personalInfo);
             cvRepository.save(cvToCVEntity(cv));
+            return Optional.ofNullable(cv.getPerson());
         }
-        return "done saving data";
+        else {
+            return Optional.empty();
+        }
     }
 
     @Override
