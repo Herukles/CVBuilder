@@ -16,13 +16,12 @@ import org.springframework.stereotype.Component;
 public class ContactInfoEntity {
 
     @Id
-    @Column(name = "contactInfo_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cv_id")
     private Long id;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name="contactInfo_ID")
+    @JoinColumn(name="cv_id_contact")
     CVEntity cvEntity;
 
     private String phoneNumber;

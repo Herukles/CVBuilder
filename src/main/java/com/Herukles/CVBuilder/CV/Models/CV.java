@@ -23,10 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class CV {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     @Autowired
     private PersonalInfo person;
     @Autowired

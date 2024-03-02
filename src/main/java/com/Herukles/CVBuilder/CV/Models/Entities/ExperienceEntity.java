@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ExperienceEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne(cascade = CascadeType.ALL)

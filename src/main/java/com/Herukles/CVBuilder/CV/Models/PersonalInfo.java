@@ -1,5 +1,6 @@
 package com.Herukles.CVBuilder.CV.Models;
 
+import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,8 +21,7 @@ import java.time.LocalDate;
 public class PersonalInfo {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
 
     private String name;

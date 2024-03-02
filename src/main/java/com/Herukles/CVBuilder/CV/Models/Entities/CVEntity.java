@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@ToString
+
 @Data
 @Component
 @NoArgsConstructor
@@ -18,8 +18,9 @@ import java.util.List;
 public class CVEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
 
     @OneToOne(mappedBy = "cvEntity", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn

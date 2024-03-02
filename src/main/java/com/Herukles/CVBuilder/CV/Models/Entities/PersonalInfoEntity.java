@@ -12,14 +12,18 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "PersonalInfo")
+@Table(name = "personal")
 @Getter
 @Setter
 public class PersonalInfoEntity {
     @Id
-    @Column(name="personal_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Column(name="cv_id")
+    private Long id;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name="cv_id_personal")
+    CVEntity cvEntity;
 
     private String name;
     private String surname;
@@ -30,8 +34,5 @@ public class PersonalInfoEntity {
     private int age;
     private String aboutMe;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name="personal_ID")
-    CVEntity cvEntity;
+
 }
