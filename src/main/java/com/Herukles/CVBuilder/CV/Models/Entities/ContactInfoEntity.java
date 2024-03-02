@@ -22,7 +22,7 @@ public class ContactInfoEntity {
     @OneToOne
     @MapsId
     @JoinColumn(name="cv_id_contact")
-    CVEntity cvEntity;
+    private CVEntity cvEntity;
 
     private String phoneNumber;
     private String email;

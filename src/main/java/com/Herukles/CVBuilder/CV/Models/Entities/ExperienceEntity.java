@@ -25,8 +25,8 @@ public class ExperienceEntity {
     @JoinColumn(name = "cv_id")
     private CVEntity cvEntity;
 
-    LocalDate dateStart;
-    LocalDate dateEnd;
-    String companyName;
-    String description;
+    private LocalDate dateStart;
+    private LocalDate dateEnd;
+    private String companyName;
+    private String description;
 }

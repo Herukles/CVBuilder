@@ -24,7 +24,7 @@ public class EducationEntity {
     @JoinColumn(name = "cv_id")
     private CVEntity cvEntity;
 
-    String nameOfInstitution;
-    LocalDate educationDateStart;
-    LocalDate educationDateEnd;
+    private String nameOfInstitution;
+    private LocalDate educationDateStart;
+    private LocalDate educationDateEnd;
 }
