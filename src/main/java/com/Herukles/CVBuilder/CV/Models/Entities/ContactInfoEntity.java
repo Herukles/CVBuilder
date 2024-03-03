@@ -1,6 +1,6 @@
 package com.Herukles.CVBuilder.CV.Models.Entities;
 
-import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;

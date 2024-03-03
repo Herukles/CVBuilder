@@ -19,17 +19,10 @@ import java.time.LocalDate;
 @Setter
 @Component
 public class PersonalInfo {
-
-
-
-    private long id;
-
     private String name;
     private String surname;
     private int age;
     private String countryOfBirth;
     private LocalDate dateOfBirth;
     private String aboutMe;
-
-    CV cv;
 }

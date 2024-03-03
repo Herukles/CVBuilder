@@ -2,6 +2,8 @@ package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
 import com.Herukles.CVBuilder.CV.Models.ContactInfo;
+import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.ContactInfoEntity;
 import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Repositories.ContactMeRepository;
 import com.Herukles.CVBuilder.CV.Services.ContactInfoService;
@@ -26,13 +28,14 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
-    public String save(@RequestParam Long id, ContactInfo contactInfo) {
-        Optional<CV> foundCV = cvRepository.findById(id).map(cvEntity -> cvEntityToCV(cvEntity));
+    public String save(Long id, ContactInfo contactInfo) {
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
         if(foundCV.isPresent()) {
-            CV cv = foundCV.get();
-            contactInfo.setCv(cv);
-            cv.setContactMe(contactInfo);
-            cvRepository.save(cvToCVEntity(cv));
+            CVEntity cv = foundCV.get();
+            ContactInfoEntity contactInfoEntity = contactInfoToContactInfoEntity(contactInfo);
+            cv.setContactMe(contactInfoEntity);
+            cv.getContactMe().setCvEntity(cv);
+            cvRepository.save(cv);
         }
         return "done saving data";
     }

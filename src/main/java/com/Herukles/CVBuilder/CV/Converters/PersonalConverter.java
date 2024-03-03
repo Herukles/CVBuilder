@@ -8,7 +8,6 @@ import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 public class PersonalConverter {
     public static PersonalInfoEntity personalToPersonalEntity(PersonalInfo personalInfo) {
         return PersonalInfoEntity.builder()
-
                 .name(personalInfo.getName())
                 .surname(personalInfo.getSurname())
                 .age(personalInfo.getAge())
@@ -20,7 +19,6 @@ public class PersonalConverter {
 
     public static PersonalInfo personalEntityToPersonal(PersonalInfoEntity personalInfoEntity) {
         return PersonalInfo.builder()
-
                 .name(personalInfoEntity.getName())
                 .surname(personalInfoEntity.getSurname())
                 .age(personalInfoEntity.getAge())

@@ -17,14 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Education {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;
-
-    CV cv;
 }

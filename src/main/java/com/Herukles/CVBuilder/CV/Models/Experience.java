@@ -10,19 +10,14 @@ import java.time.LocalDate;
 
 @Component
 @Data
-@Scope("prototype")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Experience {
-    private long id;
-
     LocalDate dateStart;
     LocalDate dateEnd;
     String companyName;
     String description;
-
-    CV cv;
 }

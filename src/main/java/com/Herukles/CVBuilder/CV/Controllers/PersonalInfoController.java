@@ -20,26 +20,23 @@ import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 public class PersonalInfoController {
     private final CVServiceImpl cvService;
     private final PersonalServiceImpl personalService;
-
-    private final CV cv;
-
     @Autowired
-    public PersonalInfoController(CVServiceImpl cvService, PersonalServiceImpl personalService, CV cv) {
+    public PersonalInfoController(CVServiceImpl cvService, PersonalServiceImpl personalService) {
         this.cvService = cvService;
         this.personalService = personalService;
-        this.cv = cv;
-    }
 
-    @PostMapping(value="{id}/save")
-    public Optional<PersonalInfo> savePersonal(@RequestParam(name = "id") long id, @RequestBody PersonalInfo personalInfo) {
-        Optional<CV> foundCV = cvService.findById(id);
-        if(foundCV.isPresent()){
-            CV cvTmp = foundCV.get();
-            personalInfo.setCv(cvTmp);
-            cvTmp.setPerson(personalInfo);
-            personalService.saveWithCVId(foundCV.get().getId(), personalInfo);
-            return Optional.ofNullable(personalInfo);
-        }
-        else {return Optional.empty();}
     }
+//
+//    @PostMapping(value="{id}/save")
+//    public Optional<PersonalInfo> savePersonal(@RequestParam(name = "id") long id, @RequestBody PersonalInfo personalInfo) {
+//        Optional<CV> foundCV = cvService.findById(id);
+//        if(foundCV.isPresent()){
+//            CV cvTmp = foundCV.get();
+//            personalInfo.setCv(cvTmp);
+//            cvTmp.setPerson(personalInfo);
+//            personalService.saveWithCVId(foundCV.get().getId(), personalInfo);
+//            return Optional.ofNullable(personalInfo);
+//        }
+//        else {return Optional.empty();}
+//    }
 }

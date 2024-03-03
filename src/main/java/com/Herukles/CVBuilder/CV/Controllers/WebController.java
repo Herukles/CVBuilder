@@ -12,25 +12,22 @@ public class WebController {
 
     CVController cvController;
     PersonalInfoController personalInfoController;
-    CV cv;
-
     @Autowired
-    public WebController(CVController cvController, PersonalInfoController personalInfoController, CV cv) {
+    public WebController(CVController cvController, PersonalInfoController personalInfoController) {
         this.cvController = cvController;
         this.personalInfoController = personalInfoController;
-        this.cv = cv;
     }
 
-    @GetMapping(path = "/home/")
-    public String mainPage(Model model) {
-        return "home";
+//    @GetMapping(path = "/home/")
+//    public String mainPage(Model model) {
+//        return "home";
+//    }
+//
+//    @GetMapping(path = "/home/fillPersonal")
+//    public String fillPersonalInfoSite(Model model) {
+//        model.addAttribute("personalInfo", cv.getPerson());
+//        return "fillPersonal";
     }
 
-    @GetMapping(path = "/home/fillPersonal")
-    public String fillPersonalInfoSite(Model model) {
-        model.addAttribute("personalInfo", cv.getPerson());
-        return "fillPersonal";
-    }
-}
 
 

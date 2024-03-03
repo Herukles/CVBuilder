@@ -31,7 +31,7 @@ public class EducationServiceImpl implements EducationService {
         Optional<CV> foundCV = cvRepository.findById(id).map(cv1 -> cvEntityToCV(cv1));
         if(foundCV.isPresent()) {
             CV cv = foundCV.get();
-            List<Education> edu = cv.getEducationEntityList();
+            List<Education> edu = cv.getEducationList();
             edu.add(education);
             cvRepository.save(cvToCVEntity(cv));
         }

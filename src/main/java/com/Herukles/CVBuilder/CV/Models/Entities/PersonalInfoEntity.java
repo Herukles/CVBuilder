@@ -29,7 +29,7 @@ public class PersonalInfoEntity {
     private String surname;
     private String countryOfBirth;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
     private int age;
     private String aboutMe;

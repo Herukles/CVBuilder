@@ -6,7 +6,6 @@ import com.Herukles.CVBuilder.CV.Models.Experience;
 public class ExperienceConverter {
     public static Experience experienceEntityToExperience(ExperienceEntity experienceEntity) {
         return Experience.builder()
-                .id(experienceEntity.getId())
                 .companyName(experienceEntity.getCompanyName())
                 .dateStart(experienceEntity.getDateStart())
                 .dateEnd(experienceEntity.getDateEnd())
@@ -15,7 +14,6 @@ public class ExperienceConverter {
     }
     public static ExperienceEntity experienceToExperienceEntity(Experience experience) {
         return ExperienceEntity.builder()
-                .id(experience.getId())
                 .companyName(experience.getCompanyName())
                 .dateStart(experience.getDateStart())
                 .dateEnd(experience.getDateEnd())
