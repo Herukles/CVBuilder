@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 @Data
 @Component
-@Scope("prototype")
 @Getter
 @Setter
 @Builder
@@ -18,14 +17,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class EducationEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cv_id")
     private CVEntity cvEntity;
 
-    String nameOfInstitution;
-    LocalDate educationDateStart;
-    LocalDate educationDateEnd;
+    private String nameOfInstitution;
+    private LocalDate educationDateStart;
+    private LocalDate educationDateEnd;
 }

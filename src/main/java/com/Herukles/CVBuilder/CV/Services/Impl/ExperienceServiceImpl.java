@@ -1,12 +1,14 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
+import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.ExperienceEntity;
 import com.Herukles.CVBuilder.CV.Models.Experience;
 import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Repositories.ExperienceRepository;
-import com.Herukles.CVBuilder.CV.Services.CVService;
 import com.Herukles.CVBuilder.CV.Services.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +16,7 @@ import java.util.Optional;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 import static com.Herukles.CVBuilder.CV.Converters.ExperienceConverter.*;
 
+@Service
 public class ExperienceServiceImpl implements ExperienceService {
     CVRepository cvRepository;
     ExperienceRepository experienceRepository;
@@ -26,13 +29,12 @@ public class ExperienceServiceImpl implements ExperienceService {
 
     @Override
     public String save(Long id, Experience experience) {
-        Optional<CV> foundCV = cvRepository.findById(id).map(cvEntity -> cvEntityToCV(cvEntity));
+        Optional<CVEntity> foundCV = cvRepository.findById(id);
         if(foundCV.isPresent()) {
-            CV cv = foundCV.get();
-            experience.setCv(cv);
-            List<Experience> experienceList = cv.getWorkExperienceListEntity();
-            experienceList.add(experience);
-            cvRepository.save(cvToCVEntity(cv));
+            CVEntity cv = foundCV.get();
+            List<ExperienceEntity> experienceEntityList = cv.getWorkExperienceListEntity();
+            experienceEntityList.add(experienceToExperienceEntity(experience));
+            cvRepository.save(cv);
         }
         return "saved to db.";
     }
@@ -40,6 +42,11 @@ public class ExperienceServiceImpl implements ExperienceService {
     @Override
     public Optional<Experience> findById(Long id) {
         return experienceRepository.findById(id).map(experience -> experienceEntityToExperience(experience));
+    }
+
+    @Override
+    public List<Experience> findAll() {
+        return experienceRepository.findAll().stream().map(experienceEntity -> experienceEntityToExperience(experienceEntity)).toList();
     }
 
     @Override

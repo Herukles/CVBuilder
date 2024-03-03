@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Component
 @Data
-@Scope("prototype")
 @Getter
 @Setter
 @Builder
@@ -19,15 +18,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ExperienceEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cv_id")
     private CVEntity cvEntity;
 
-    LocalDate dateStart;
-    LocalDate dateEnd;
-    String companyName;
-    String description;
+    private LocalDate dateStart;
+    private LocalDate dateEnd;
+    private String companyName;
+    private String description;
 }

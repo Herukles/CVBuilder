@@ -17,11 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Education {
-
-    private long id;
     String nameOfInstitution;
     LocalDate educationDateStart;
     LocalDate educationDateEnd;
-
-    CV cv;
 }

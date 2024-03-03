@@ -1,6 +1,6 @@
 package com.Herukles.CVBuilder.CV.Models.Entities;
 
-import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;
@@ -16,14 +16,13 @@ import org.springframework.stereotype.Component;
 public class ContactInfoEntity {
 
     @Id
-    @Column(name = "contactInfo_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cv_id")
     private Long id;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name="contactInfo_ID")
-    CVEntity cvEntity;
+    @JoinColumn(name="cv_id_contact")
+    private CVEntity cvEntity;
 
     private String phoneNumber;
     private String email;

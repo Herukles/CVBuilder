@@ -5,7 +5,6 @@ import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
 import com.Herukles.CVBuilder.CV.Models.Entities.EducationEntity;
 import com.Herukles.CVBuilder.CV.Models.Entities.ExperienceEntity;
 import com.Herukles.CVBuilder.CV.Models.Experience;
-import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,27 +33,25 @@ public class CVConverter {
         }
 
         return CV.builder()
-                .id(cvEntity.getId())
                 .person(personalEntityToPersonal(cvEntity.getPerson()))
-                .educationEntityList(educationList)
-                .workExperienceListEntity(experienceList)
+                .educationList(educationList)
+                .experienceList(experienceList)
                 .contactMe(contactInfoEntityToContactInfo(cvEntity.getContactMe()))
                 .build();
     }
     public static CVEntity cvToCVEntity(CV cv) {
 
         List<EducationEntity> educationEntityList = new ArrayList<>();
-        for(Education edu : cv.getEducationEntityList())  {
+        for(Education edu : cv.getEducationList())  {
             educationEntityList.add(educationToEducationEntity(edu));
         }
 
         List<ExperienceEntity> experienceEntityList = new ArrayList<>();
-        for(Experience exp : cv.getWorkExperienceListEntity()) {
+        for(Experience exp : cv.getExperienceList()) {
             experienceEntityList.add(experienceToExperienceEntity(exp));
         }
 
         return CVEntity.builder()
-                .id(cv.getId())
                 .person(personalToPersonalEntity(cv.getPerson()))
                 .educationEntityList(educationEntityList)
                 .workExperienceListEntity(experienceEntityList)
