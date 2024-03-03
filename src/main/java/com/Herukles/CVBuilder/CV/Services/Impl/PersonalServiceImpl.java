@@ -7,6 +7,8 @@ import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Repositories.PersonalInfoRepository;
 import com.Herukles.CVBuilder.CV.Services.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
@@ -25,19 +27,18 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public Optional<PersonalInfo> saveWithCVId(Long id, PersonalInfo personalInfo) {
-        Optional<CV> foundCV = cvRepository.findById(id).map(cvEntity -> cvEntityToCV(cvEntity));
-        if(foundCV.isPresent()) {
-            CV cv = foundCV.get();
-            PersonalInfoEntity personalInfoEntity = personalToPersonalEntity(personalInfo);
-            personalInfoEntity.setCvEntity(cvToCVEntity(cv));
-            cv.setPerson(personalInfo);
-            cvRepository.save(cvToCVEntity(cv));
-            return Optional.ofNullable(cv.getPerson());
-        }
-        else {
-            return Optional.empty();
-        }
+    public ResponseEntity<PersonalInfo> save(Long id, PersonalInfo personalInfo) {
+        PersonalInfoEntity personalInfoEntity = personalInfoRepository.getReferenceById(id);
+
+        personalInfoEntity.setName(personalInfo.getName());
+        personalInfoEntity.setSurname(personalInfo.getSurname());
+        personalInfoEntity.setAge(personalInfo.getAge());
+        personalInfoEntity.setCountryOfBirth(personalInfo.getCountryOfBirth());
+        personalInfoEntity.setDateOfBirth(personalInfo.getDateOfBirth());
+        personalInfoEntity.setAboutMe(personalInfo.getAboutMe());
+
+        PersonalInfoEntity savedPersonal = personalInfoRepository.save(personalInfoEntity);
+        return new ResponseEntity<>(personalEntityToPersonal(savedPersonal), HttpStatus.OK);
     }
 
     @Override

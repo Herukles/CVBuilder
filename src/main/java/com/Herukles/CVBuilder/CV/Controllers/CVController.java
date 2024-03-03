@@ -41,15 +41,8 @@ public class CVController {
         return new ResponseEntity<>(cvOut, HttpStatus.CREATED);
     }
 
-    @PostMapping(path="/createUpdate/{id}")
-    public ResponseEntity<Optional<CV>> updateCVById(@PathVariable Long id, @RequestBody CV cv) {
-        cvService.updateByID(id, cv);
-        Optional<CV> foundCV = cvService.findById(id);
-        return new ResponseEntity<>(foundCV, HttpStatus.OK);
-    }
-
-    @PutMapping(path="/delete/{id}")
-    public void deleteCVByID(@PathVariable Long id){
-        cvService.deleteById(id);
-    }
+//    @PutMapping(path="/delete/{id}")
+//    public void deleteCVByID(@PathVariable Long id){
+//        cvService.deleteById(id);
+//    }
 }

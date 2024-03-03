@@ -1,6 +1,7 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
+import com.Herukles.CVBuilder.CV.Models.Education;
 import com.Herukles.CVBuilder.CV.Models.Entities.*;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
@@ -50,31 +51,6 @@ public class CVServiceImpl implements CVService {
         return cvEntityToCV(savedCV);
     }
 
-    public CV updateByID(Long id, CV cv) {
-
-        CVEntity cvEntity = cvToCVEntity(cv);
-        PersonalInfoEntity personalInfoEntity = cvEntity.getPerson();
-        ContactInfoEntity contactInfoEntity = cvEntity.getContactMe();
-        List<EducationEntity> educationEntityList = cv.getEducationList().stream().map(education -> educationToEducationEntity(education)).toList();
-        List<ExperienceEntity> experienceEntityList = cv.getExperienceList().stream().map(experience -> experienceToExperienceEntity(experience)).toList();
-
-        personalInfoEntity.setCvEntity(cvEntity);
-        contactInfoEntity.setCvEntity(cvEntity);
-        for(EducationEntity education : educationEntityList){education.setCvEntity(cvEntity);}
-        for(ExperienceEntity experience: experienceEntityList){experience.setCvEntity(cvEntity);}
-        cvEntity.setEducationEntityList(educationEntityList);
-        cvEntity.setWorkExperienceListEntity(experienceEntityList);
-        cvEntity.setId(id);
-
-        CVEntity savedCV = cvRepository.save(cvEntity);
-        return cvEntityToCV(savedCV);
-
-    }
-
-    public List<CV> findAllCVs() {
-        List<CVEntity> cvEntityList = cvRepository.findAll();
-        return cvEntityList.stream().map(cvEntity -> cvEntityToCV(cvEntity)).toList();
-    }
 
     @Override
     public Optional<CV> findById(Long id) {
@@ -83,11 +59,31 @@ public class CVServiceImpl implements CVService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        try {
-            cvRepository.deleteById(id);
-        } catch (final EmptyResultDataAccessException ex) {
-            log.debug("Attempted to delete non-existent CV.");
+    public ResponseEntity<HttpStatus> deleteCV(Long id) {
+        try {cvRepository.deleteById(id);} catch (Exception e) {
+            System.out.println("cannot delete");
         }
+        return null;
+    }
+
+    private CVEntity addReferenceFieldsToConvertedEntities(CVEntity convertedCV, CVEntity cvEntityRef) {
+        //conversion
+
+        //extract fields
+        PersonalInfoEntity personalInfoEntity = convertedCV.getPerson();
+        ContactInfoEntity contactInfoEntity = convertedCV.getContactMe();
+        List<EducationEntity> educationEntityList = convertedCV.getEducationEntityList();
+        List<ExperienceEntity> experienceEntityList = convertedCV.getWorkExperienceListEntity();
+
+        personalInfoEntity.setCvEntity(cvEntityRef);
+        contactInfoEntity.setCvEntity(cvEntityRef);
+        for(ExperienceEntity exp : experienceEntityList) {exp.setCvEntity(cvEntityRef);}
+        for(EducationEntity edu : educationEntityList) {edu.setCvEntity(cvEntityRef);}
+
+        convertedCV.setPerson(personalInfoEntity);
+        convertedCV.setContactMe(contactInfoEntity);
+        convertedCV.setEducationEntityList(educationEntityList);
+        convertedCV.setWorkExperienceListEntity(experienceEntityList);
+        return convertedCV;
     }
 }

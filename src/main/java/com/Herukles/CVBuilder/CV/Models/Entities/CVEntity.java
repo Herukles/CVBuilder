@@ -30,10 +30,10 @@ public class CVEntity {
     @PrimaryKeyJoinColumn
     private ContactInfoEntity contactMe;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL, orphanRemoval=true)
     private List<EducationEntity> educationEntityList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cvEntity", cascade = CascadeType.ALL, orphanRemoval=true)
     private List<ExperienceEntity> workExperienceListEntity;
 
 }

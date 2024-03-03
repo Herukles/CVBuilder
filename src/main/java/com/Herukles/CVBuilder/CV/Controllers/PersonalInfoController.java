@@ -1,6 +1,8 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
+import com.Herukles.CVBuilder.CV.Models.Entities.CVEntity;
+import com.Herukles.CVBuilder.CV.Models.Entities.PersonalInfoEntity;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Services.Impl.CVServiceImpl;
 import com.Herukles.CVBuilder.CV.Services.Impl.PersonalServiceImpl;
@@ -16,7 +18,7 @@ import java.util.Optional;
 import static com.Herukles.CVBuilder.CV.Converters.CVConverter.*;
 
 @RestController
-@RequestMapping("CV/personal")
+@RequestMapping("CV")
 public class PersonalInfoController {
     private final CVServiceImpl cvService;
     private final PersonalServiceImpl personalService;
@@ -25,6 +27,18 @@ public class PersonalInfoController {
         this.cvService = cvService;
         this.personalService = personalService;
 
+    }
+
+    @GetMapping(path = "{id}/personal")
+    public Optional<PersonalInfo> getPersonalByCVId(@PathVariable Long id) {
+        Optional<CV> foundCv = cvService.findById(id);
+        if(foundCv.isPresent()) {return Optional.of(foundCv.get().getPerson());}
+        else{return Optional.empty();}
+    }
+
+    @PostMapping(path = "{id}/personal/update")
+    public void updatePersonalDataWithCVId(@PathVariable Long id, @RequestBody PersonalInfo personalInfo){
+        personalService.save(id, personalInfo);
     }
 //
 //    @PostMapping(value="{id}/save")
