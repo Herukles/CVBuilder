@@ -14,6 +14,7 @@ public class PersonalConverter {
                 .countryOfBirth(personalInfo.getCountryOfBirth())
                 .age(personalInfo.getAge())
                 .aboutMe(personalInfo.getAboutMe())
+                .dateOfBirth(personalInfo.getDateOfBirth())
                 .build();
     }
 
@@ -25,6 +26,7 @@ public class PersonalConverter {
                 .countryOfBirth(personalInfoEntity.getCountryOfBirth())
                 .age(personalInfoEntity.getAge())
                 .aboutMe(personalInfoEntity.getAboutMe())
+                .dateOfBirth(personalInfoEntity.getDateOfBirth())
                 .build();
     }
 }
