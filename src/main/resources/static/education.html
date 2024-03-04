@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>education</title>
+</head>
+<body>
+<h1>Education</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th> nameOfInstitution </th>
+    <th> dateStart </th>
+    <th> dateEnd </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${educationList.empty}">
+    <td colspan="2"> No Education Fields. Add one </td>
+  </tr>
+  <tr th:each="edu : ${educationList}">
+    <td><span th:text="${edu.nameOfInstitution}"> name of institution </span></td>
+    <td><span th:text="${edu.educationDateStart}"> dateStart </span></td>
+    <td><span th:text="${edu.educationDateEnd}"> dateEnd </span></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<button onclick="showForm()">add education</button>
+
+<div id="educationForm" style="display: none;">
+  <form th:action="@{${urlToNext}}" method="post" th:object="${education}">
+    <label for="nameOfInstitution">Name of institution:</label>
+    <input type="text" id="nameOfInstitution" name="nameOfInstitution" required><br>
+
+    <label for="educationDateStart">start date:</label>
+    <input type="date" id="educationDateStart" name="educationDateStart" required><br>
+
+    <label for="educationDateEnd">end date:</label>
+    <input type="date" id="educationDateEnd" name="educationDateEnd" required><br>
+
+    <input type="submit" value="add">
+  </form>
+</div>
+
+<script>
+        function showForm() {
+            const form = document.getElementById("educationForm");
+            form.style.display = "block";
+        }
+    </script>
+
+
+</body>
+</html>

@@ -2,12 +2,17 @@ package com.Herukles.CVBuilder.CV.Controllers;
 
 import com.Herukles.CVBuilder.CV.Models.CV;
 import com.Herukles.CVBuilder.CV.Models.ContactInfo;
+import com.Herukles.CVBuilder.CV.Models.Education;
 import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class WebController {
@@ -44,6 +49,23 @@ public class WebController {
         model.addAttribute("cvId", this.cvId);
         return "contactMe";
     }
+
+    @GetMapping(path = "/home/education")
+    public String fillEducation(Model model) {
+        ResponseEntity<Optional<CV>> cv = cvController.getCVbyId(this.cvId);
+        Optional<CV> cv1 = cv.getBody();
+        if(cv1.isPresent()) {
+            CV cv2 = cv1.get();
+            model.addAttribute("educationList", cv2.getEducationList());
+        } else {model.addAttribute("educationList", new ArrayList<Education>());}
+
+        model.addAttribute("urlToNext", "/CV/"+this.cvId+"/education/add");
+        model.addAttribute("education", new Education());
+        return "education";
+    }
+
+
+
 
 }
 

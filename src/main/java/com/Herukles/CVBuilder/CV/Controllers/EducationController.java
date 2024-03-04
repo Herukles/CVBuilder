@@ -7,6 +7,7 @@ import com.Herukles.CVBuilder.CV.Services.CVService;
 import com.Herukles.CVBuilder.CV.Services.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,8 +42,9 @@ public class EducationController {
     }
 
     @PostMapping(path="{cvId}/education/add")
-    public void addEdu(@PathVariable Long cvId, @RequestBody Education education) {
+    public RedirectView addEdu(@PathVariable Long cvId, Education education) {
             educationService.create(cvId, education);
+            return new RedirectView("/home/education");
     }
 
     @PostMapping(path = "{cvId}/education/{eduId}/update")

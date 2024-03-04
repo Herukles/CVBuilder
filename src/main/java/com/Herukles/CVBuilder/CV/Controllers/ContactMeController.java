@@ -37,6 +37,6 @@ public class ContactMeController {
     @PostMapping("{id}/contactme/update")
     public RedirectView updateContactInfo(@PathVariable Long id, ContactInfo contactInfo) {
         contactInfoService.save(id, contactInfo);
-        return new RedirectView("/home/contactme");
+        return new RedirectView("/home/education");
     }
 }
