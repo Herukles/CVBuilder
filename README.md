@@ -4,7 +4,7 @@
 Technology stack: Java, Spring, Spring JPA, H2 database, Spring MVC, thymeleaf, itext pdf.
 
 <h3>Working on:</h3>
-<b><li>Right now I implement front end side of application so end user will be able to fill forms, and manage his data. </li></b>
+<b><li>Right now I am implementing front end side of application so end user will be able to fill forms, and manage his data. </li></b>
 <b><li>unit tests.</li></b>
 <hr>
 
