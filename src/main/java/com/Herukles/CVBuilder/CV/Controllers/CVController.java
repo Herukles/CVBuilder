@@ -23,11 +23,6 @@ public class CVController {
         this.cvService = cvService;
     }
 
-//    @GetMapping(path = "/")
-//    public List<CV> cvList() {
-//
-//    }
-
     @GetMapping(path="/{id}")
     public ResponseEntity<Optional<CV>> getCVbyId(@PathVariable Long id) {
         Optional<CV> cv = cvService.findById(id);
@@ -47,8 +42,4 @@ public class CVController {
         Long cvId = cvService.create();
         return new ResponseEntity<>(cvId, HttpStatus.CREATED);
     }
-//    @PutMapping(path="/delete/{id}")
-//    public void deleteCVByID(@PathVariable Long id){
-//        cvService.deleteById(id);
-//    }
 }
