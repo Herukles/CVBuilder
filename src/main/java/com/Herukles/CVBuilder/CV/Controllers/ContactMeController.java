@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
 
@@ -34,7 +35,8 @@ public class ContactMeController {
     }
 
     @PostMapping("{id}/contactme/update")
-    public ResponseEntity<ContactInfo> updateContactInfo(@PathVariable Long id, @RequestBody ContactInfo contactInfo) {
-        return contactInfoService.save(id, contactInfo);
+    public RedirectView updateContactInfo(@PathVariable Long id, ContactInfo contactInfo) {
+        contactInfoService.save(id, contactInfo);
+        return new RedirectView("/home/contactme");
     }
 }

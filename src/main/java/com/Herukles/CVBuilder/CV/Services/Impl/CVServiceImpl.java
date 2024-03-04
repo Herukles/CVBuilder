@@ -1,9 +1,7 @@
 package com.Herukles.CVBuilder.CV.Services.Impl;
 
-import com.Herukles.CVBuilder.CV.Models.CV;
-import com.Herukles.CVBuilder.CV.Models.Education;
+import com.Herukles.CVBuilder.CV.Models.*;
 import com.Herukles.CVBuilder.CV.Models.Entities.*;
-import com.Herukles.CVBuilder.CV.Models.PersonalInfo;
 import com.Herukles.CVBuilder.CV.Repositories.CVRepository;
 import com.Herukles.CVBuilder.CV.Services.CVService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +55,21 @@ public class CVServiceImpl implements CVService {
     public Optional<CV> findById(Long id) {
         Optional<CVEntity> foundCVEntity = cvRepository.findById(id);
         return foundCVEntity.map(cvEntity -> cvEntityToCV(cvEntity));
+    }
+
+    @Override
+    public Long create() {
+        CVEntity cvEntity = cvToCVEntity(CV.builder()
+                .person(new PersonalInfo())
+                .contactMe(new ContactInfo())
+                .experienceList(new ArrayList<Experience>())
+                .educationList(new ArrayList<Education>()).build());
+        cvEntity.getPerson().setCvEntity(cvEntity);
+        cvEntity.getContactMe().setCvEntity(cvEntity);
+        cvEntity.getEducationEntityList().forEach(educationEntity -> educationEntity.setCvEntity(cvEntity));
+        cvEntity.getWorkExperienceListEntity().forEach(experienceEntity -> experienceEntity.setCvEntity(cvEntity));
+        CVEntity savedCV = cvRepository.save(cvEntity);
+        return savedCV.getId();
     }
 
     @Override

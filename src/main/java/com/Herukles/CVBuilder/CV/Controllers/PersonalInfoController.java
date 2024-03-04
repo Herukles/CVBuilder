@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
 
@@ -37,20 +38,8 @@ public class PersonalInfoController {
     }
 
     @PostMapping(path = "{id}/personal/update")
-    public void updatePersonalDataWithCVId(@PathVariable Long id, @RequestBody PersonalInfo personalInfo){
+    public RedirectView updatePersonalDataWithCVId(@PathVariable Long id, PersonalInfo personalInfo){
         personalService.save(id, personalInfo);
+        return new RedirectView("/home/contactme");
     }
-//
-//    @PostMapping(value="{id}/save")
-//    public Optional<PersonalInfo> savePersonal(@RequestParam(name = "id") long id, @RequestBody PersonalInfo personalInfo) {
-//        Optional<CV> foundCV = cvService.findById(id);
-//        if(foundCV.isPresent()){
-//            CV cvTmp = foundCV.get();
-//            personalInfo.setCv(cvTmp);
-//            cvTmp.setPerson(personalInfo);
-//            personalService.saveWithCVId(foundCV.get().getId(), personalInfo);
-//            return Optional.ofNullable(personalInfo);
-//        }
-//        else {return Optional.empty();}
-//    }
 }

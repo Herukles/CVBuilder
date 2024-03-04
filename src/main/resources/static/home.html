@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
+    <title>Strona główna</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>CVBuilder application!</h1>
-<p> Hello on my application! Please click button to start</p>
-<p><a href="fillPersonal">Click here</a> to create your own online resume</p>
+<h1>Witaj na stronie głównej!</h1>
+<button id="startButton">Zacznij</button>
+
+<script>
+        $(document).ready(function(){
+            $("#startButton").click(function(){
+                $.ajax({
+                    url: 'http://localhost:8080/CV/create',
+                    type: 'post',
+                    success: function(response) {
+                        // po pomyślnym wykonaniu żądania POST, przekieruj do strony z formularzami
+                        window.location.href = "http://localhost:8080/home/fillPersonal";
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        alert("Wystąpił błąd. Spróbuj ponownie.");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

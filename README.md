@@ -22,7 +22,7 @@ Technology stack: Java, Spring, Spring JPA, H2 database, Spring MVC, thymeleaf, 
     <hr>
     <h3>Contact Me</h3>
     <li><b>/CV/{id}/contacme/</b> GET method to return contactMe json file from given CV id. </li>
-    <li><b>/CV/{id}/contacme/create</b>POST method which updated contactMe info from given CV id. </li>
+    <li><b>/CV/{id}/contacme/save</b>POST method which updated contactMe info from given CV id. </li>
     <li><b>/CV/{id}/contacme/update</b> POST method used to update contactMe information with personalInfo json file in request body.</li>
     <hr>
     <h3>Education fields</h3>

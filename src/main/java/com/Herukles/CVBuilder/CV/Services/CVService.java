@@ -13,5 +13,7 @@ public interface CVService {
     CV save(CV cv);
     Optional<CV> findById(@RequestParam Long id);
 
+    Long create();
+
     ResponseEntity<HttpStatus> deleteCV(Long id);
 }

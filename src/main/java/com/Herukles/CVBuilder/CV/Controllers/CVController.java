@@ -36,12 +36,17 @@ public class CVController {
 
     }
 
-    @PutMapping(value = "create", consumes = {"application/json"})
-    public ResponseEntity<Optional<CV>> createCV(@RequestBody CV cv) {
+    @PutMapping(value = "save", consumes = {"application/json"})
+    public ResponseEntity<Optional<CV>> saveCV(@RequestBody CV cv) {
         CV cvOut = cvService.save(cv);
         return new ResponseEntity<>(Optional.ofNullable(cvOut), HttpStatus.CREATED);
     }
 
+    @PostMapping(path = "create")
+    public ResponseEntity<Long> createCV() {
+        Long cvId = cvService.create();
+        return new ResponseEntity<>(cvId, HttpStatus.CREATED);
+    }
 //    @PutMapping(path="/delete/{id}")
 //    public void deleteCVByID(@PathVariable Long id){
 //        cvService.deleteById(id);

@@ -1,49 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="">
 <head>
-    <meta charset="UTF-8">
-    <title>Form</title>
+    <title>Personal information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>please fill form with your data: </p>
-<form th:action="@{personal/save}" th:object="${personalInfo}" method="post">
-    <div>
-        <label>name:
-        <input type="text" th:field="*{name}" placeholder="enter name">
-        </label>
-    </div>
-    <br>
-    <div>
-        <label>surname:
-        <input type="text" th:field="*{surname}" placeholder="enter surname">
-        </label>
-    </div>
-    <br>
-    <div>
-        <label>age:
-        <input type="number" th:field="*{age}" placeholder="enter age">
-        </label>
-    </div>
-    <br>
-    <div>
-        <label>countryOfBirth:
-        <input type="text" th:field="*{countryOfBirth}" placeholder="enter country where u been born">
-        </label>
-    </div>
-    <br>
-    <div>
-        <label>dateOfBirth:
-        <input type="date" th:field="*{dateOfBirth}" placeholder="enter date of birth">
-        </label>
-    </div>
-    <div>
-        <label>about me:
-        <input type="text" th:field="*{aboutMe}" placeholder="about me">
-        </label>
-    </div>
+<h1>Form</h1>
+<form id="cvForm" th:action="@{${urlToNext}}" th:object="${personalInfo}" method="post">
+    <input type="hidden" id="cvId" name="cvId" th:value="${cvId}">
 
-    <input type="submit" value="Submit" />
-</form>
+    <label for="name">name:</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}"><br>
 
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" name="surname" th:field="*{surname}"><br>
+
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age" th:field="*{age}"><br>
+
+    <label for="countryOfBirth">miejsce urodzenia:</label><br>
+    <input type="text" id="countryOfBirth" name="countryOfBirth" th:field="*{countryOfBirth}"><br>
+
+    <label for="dateOfBirth">Data urodzenia:</label><br>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}"><br>
+
+    <label for="aboutMe">O mnie:</label><br>
+    <input type="text" id="aboutMe" name="aboutMe" th:field="*{aboutMe}"><br>
+    
+    <input type="submit" value="next">
 </body>
 </html>
