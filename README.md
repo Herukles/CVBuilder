@@ -33,5 +33,5 @@ Technology stack: Java, Spring, Spring JPA, H2 database, Spring MVC, thymeleaf, 
     <li><b>/CV/{id}/education/{educationId}/delete</b> POST delete education field. </li>
     <hr>
     <h3>experience fields</h3>
-    <li>Experience fields endpoints are the same as education fields. </li>
+    <li>Experience fields endpoints are the same as education fields, replace education with experience </li>
 </ul>
