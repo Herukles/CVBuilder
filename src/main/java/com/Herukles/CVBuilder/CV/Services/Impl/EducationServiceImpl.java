@@ -71,6 +71,5 @@ public class EducationServiceImpl implements EducationService {
         List<EducationEntity> educationEntities = cvRef.getEducationEntityList();
         educationEntities.remove(eduId.intValue());
         cvRepository.save(cvRef);
-
     }
 }

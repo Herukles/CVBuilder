@@ -27,15 +27,27 @@ public class ExperienceServiceImpl implements ExperienceService {
         this.experienceRepository = experienceRepository;
     }
 
+
     @Override
-    public String save(Long id, Experience experience) {
-        Optional<CVEntity> foundCV = cvRepository.findById(id);
-        if(foundCV.isPresent()) {
-            CVEntity cv = foundCV.get();
-            List<ExperienceEntity> experienceEntityList = cv.getWorkExperienceListEntity();
-            experienceEntityList.add(experienceToExperienceEntity(experience));
-            cvRepository.save(cv);
+    public String create(Long id, Experience experience) {
+        ExperienceEntity experienceEntity = experienceToExperienceEntity(experience);
+        Optional<CVEntity> cv = cvRepository.findById(id);
+        if(cv.isPresent()){
+            experienceEntity.setCvEntity(cv.get());
+            experienceRepository.save(experienceEntity);
         }
+        return "created";
+    }
+
+    @Override
+    public String update(Long id, Experience experience) {
+        ExperienceEntity expEntity = experienceRepository.getReferenceById(id);
+        expEntity.setCompanyName(experience.getCompanyName());
+        expEntity.setDescription(experience.getDescription());
+        expEntity.setDateStart(experience.getDateStart());
+        expEntity.setDateEnd(experience.getDateEnd());
+
+        experienceRepository.save(expEntity);
         return "saved to db.";
     }
 
@@ -50,7 +62,10 @@ public class ExperienceServiceImpl implements ExperienceService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        experienceRepository.deleteById(id);
+    public void deleteById(Long expId, Long cvId) {
+        CVEntity cvRef = cvRepository.getReferenceById(cvId);
+        List<ExperienceEntity> expEntities = cvRef.getWorkExperienceListEntity();
+        expEntities.remove(expId.intValue());
+        cvRepository.save(cvRef);
     }
 }
