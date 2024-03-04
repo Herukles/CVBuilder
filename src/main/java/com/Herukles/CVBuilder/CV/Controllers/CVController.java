@@ -31,14 +31,15 @@ public class CVController {
     @GetMapping(path="/{id}")
     public ResponseEntity<Optional<CV>> getCVbyId(@PathVariable Long id) {
         Optional<CV> cv = cvService.findById(id);
-        return new ResponseEntity<>(cv, HttpStatus.OK);
+        if(cv.isPresent()) {return new ResponseEntity<>(cv, HttpStatus.OK);}
+        else{return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);}
+
     }
 
     @PutMapping(value = "create", consumes = {"application/json"})
-    public ResponseEntity<CV> createCV(@RequestBody CV cv) {
+    public ResponseEntity<Optional<CV>> createCV(@RequestBody CV cv) {
         CV cvOut = cvService.save(cv);
-        System.out.println(cv.toString());
-        return new ResponseEntity<>(cvOut, HttpStatus.CREATED);
+        return new ResponseEntity<>(Optional.ofNullable(cvOut), HttpStatus.CREATED);
     }
 
 //    @PutMapping(path="/delete/{id}")
