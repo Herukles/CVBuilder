@@ -29,6 +29,7 @@
 
 
 <button onclick="showForm()">add education</button>
+<button> <a href="http://localhost:8080/home/experience">next </a> </button>
 
 <div id="educationForm" style="display: none;">
   <form th:action="@{${urlToNext}}" method="post" th:object="${education}">

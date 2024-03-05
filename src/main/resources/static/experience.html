@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>experience</title>
+</head>
+<body>
+<h1>Experience</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>  dateStart </th>
+        <th>  dateEnd </th>
+        <th>  companyName </th>
+        <th>  description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${experienceList.empty}">
+        <td colspan="2"> No Experience Fields. Add one </td>
+    </tr>
+    <tr th:each="exp : ${experienceList}">
+        <td><span th:text="${exp.dateStart}">  dateStart </span></td>
+        <td><span th:text="${exp.dateEnd}">  dateEnd </span></td>
+        <td><span th:text="${exp.companyName}">  companyName </span></td>
+        <td><span th:text="${exp.description}">  description </span></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<button onclick="showForm()">add experience</button>
+
+<div id="experienceForm" style="display: none;">
+    <form th:action="@{${urlToNext}}" method="post" th:object="${experience}">
+        <label for="dateStart">date Start:</label>
+        <input type="date" id="dateStart" name="dateStart" required><br>
+
+        <label for="dateEnd">date end:</label>
+        <input type="date" id="dateEnd" name="dateEnd" required><br>
+
+        <label for="companyName">companyName:</label>
+        <input type="text" id="companyName" name="companyName" required><br>
+
+        <label for="description">description:</label>
+        <input type="text" id="description" name="description" required><br>
+
+        <input type="submit" value="add">
+    </form>
+</div>
+
+<script>
+        function showForm() {
+            const form = document.getElementById("experienceForm");
+            form.style.display = "block";
+        }
+    </script>
+
+
+</body>
+</html>

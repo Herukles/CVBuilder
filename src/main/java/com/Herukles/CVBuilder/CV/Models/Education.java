@@ -17,7 +17,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Education {
-    String nameOfInstitution;
-    LocalDate educationDateStart;
-    LocalDate educationDateEnd;
+
+    private String nameOfInstitution;
+    private LocalDate educationDateStart;
+    private LocalDate educationDateEnd;
 }

@@ -19,6 +19,7 @@ import java.time.LocalDate;
 @Setter
 @Component
 public class PersonalInfo {
+
     private String name;
     private String surname;
     private int age;

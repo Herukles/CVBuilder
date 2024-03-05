@@ -7,6 +7,7 @@ import com.Herukles.CVBuilder.CV.Services.CVService;
 import com.Herukles.CVBuilder.CV.Services.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,8 +41,9 @@ public class ExperienceController {
     }
 
     @PostMapping(path="{cvId}/experience/add")
-    public void addExp(@PathVariable Long cvId, @RequestBody Experience experience) {
+    public RedirectView addExp(@PathVariable Long cvId, Experience experience) {
         experienceService.create(cvId, experience);
+        return new RedirectView("/home/experience");
     }
 
     @PostMapping(path = "{cvId}/experience/{expId}/update")
