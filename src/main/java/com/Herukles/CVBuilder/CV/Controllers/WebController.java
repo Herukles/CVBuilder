@@ -1,13 +1,19 @@
 package com.Herukles.CVBuilder.CV.Controllers;
 
+import com.Herukles.CVBuilder.CV.CVGenerator;
 import com.Herukles.CVBuilder.CV.Models.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.Dsl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -16,12 +22,16 @@ public class WebController {
 
     private final CVController cvController;
     private final PersonalInfoController personalInfoController;
+    private final CVGenerator cvGenerator;
     private Long cvId;
+    FileDownloadController fileDownloadController;
 
     @Autowired
-    public WebController(CVController cvController, PersonalInfoController personalInfoController) {
+    public WebController(CVController cvController, PersonalInfoController personalInfoController, CVGenerator cvGenerator, FileDownloadController fileDownloadController) {
         this.cvController = cvController;
         this.personalInfoController = personalInfoController;
+        this.cvGenerator = cvGenerator;
+        this.fileDownloadController = fileDownloadController;
     }
 
     @GetMapping(path = "/home")
@@ -80,7 +90,12 @@ public class WebController {
 //
 //    }
 
+    @GetMapping(path="/home/generate")
+    public String generateCV() throws DocumentException, FileNotFoundException {
+        Document cvDocument = cvGenerator.generatePDF();
 
+        return "generateCV";
+    }
 }
 
 

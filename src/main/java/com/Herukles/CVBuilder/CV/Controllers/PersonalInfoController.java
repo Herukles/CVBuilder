@@ -33,8 +33,7 @@ public class PersonalInfoController {
     @GetMapping(path = "{id}/personal")
     public Optional<PersonalInfo> getPersonalByCVId(@PathVariable Long id) {
         Optional<CV> foundCv = cvService.findById(id);
-        if(foundCv.isPresent()) {return Optional.of(foundCv.get().getPerson());}
-        else{return Optional.empty();}
+        return foundCv.map(CV::getPerson);
     }
 
     @PostMapping(path = "{id}/personal/update")
