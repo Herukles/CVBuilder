@@ -3,30 +3,34 @@
 <head>
     <title>Personal information</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Form</h1>
-<form id="cvForm" th:action="@{${urlToNext}}" th:object="${personalInfo}" method="post">
-    <input type="hidden" id="cvId" name="cvId" th:value="${cvId}">
+<div id="container">
+    <h1>Please input your personal data: </h1>
+    <form id="cvForm" th:action="@{${urlToNext}}" th:object="${personalInfo}" method="post">
+        <input type="hidden" id="cvId" name="cvId" th:value="${cvId}">
 
-    <label for="name">name:</label><br>
-    <input type="text" id="name" name="name" th:field="*{name}"><br>
+        <label for="name">name:</label><br>
+        <input type="text" id="name" name="name" th:field="*{name}"><br>
 
-    <label for="surname">Surname:</label><br>
-    <input type="text" id="surname" name="surname" th:field="*{surname}"><br>
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname" th:field="*{surname}"><br>
 
-    <label for="age">Age:</label><br>
-    <input type="number" id="age" name="age" th:field="*{age}"><br>
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" th:field="*{age}"><br>
 
-    <label for="countryOfBirth">miejsce urodzenia:</label><br>
-    <input type="text" id="countryOfBirth" name="countryOfBirth" th:field="*{countryOfBirth}"><br>
+        <label for="countryOfBirth">city of birth:</label><br>
+        <input type="text" id="countryOfBirth" name="countryOfBirth" th:field="*{countryOfBirth}"><br>
 
-    <label for="dateOfBirth">Data urodzenia:</label><br>
-    <input type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}"><br>
+        <label for="dateOfBirth">date of birth:</label><br>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}"><br>
 
-    <label for="aboutMe">O mnie:</label><br>
-    <input type="text" id="aboutMe" name="aboutMe" th:field="*{aboutMe}"><br>
-    
-    <input type="submit" value="next">
+        <label for="aboutMe">About me:</label><br>
+        <input type="text" id="aboutMe" name="aboutMe" th:field="*{aboutMe}"><br><br>
+
+        <input type="submit" value="next">
+    </form>
+</div>
 </body>
 </html>

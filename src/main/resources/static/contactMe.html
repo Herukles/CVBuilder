@@ -3,21 +3,26 @@
 <head>
   <title>Contact Me</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Contact me form</h1>
-<form id="cvForm" th:action="@{${urlToNext}}" th:object="${contactInfo}" method="post">
-  <input type="hidden" id="cvId" name="cvId" th:value="${cvId}">
 
-  <label for="phoneNumber">Phone number:</label><br>
-  <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}"><br>
+<div id="container">
+  <h1>Contact me form</h1>
+  <form id="cvForm" th:action="@{${urlToNext}}" th:object="${contactInfo}" method="post">
+    <input type="hidden" id="cvId" name="cvId" th:value="${cvId}">
 
-  <label for="email">Email:</label><br>
-  <input type="text" id="email" name="email" th:field="*{email}"><br>
+    <label for="phoneNumber">Phone number:</label><br>
+    <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}"><br>
 
-  <label for="website">Website:</label><br>
-  <input type="text" id="website" name="website" th:field="*{website}"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" th:field="*{email}"><br>
 
-  <input type="submit" value="next">
+    <label for="website">Website:</label><br>
+    <input type="text" id="website" name="website" th:field="*{website}"><br>
+
+    <input type="submit" value="next">
+  </form>
+</div>
 </body>
 </html>

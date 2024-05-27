@@ -30,8 +30,7 @@ public class ContactMeController {
     @GetMapping("{id}/contactme")
     public Optional<ContactInfo> getContactMe(@PathVariable Long id) {
         Optional<CV> foundCv = cvService.findById(id);
-        if(foundCv.isPresent()) {return Optional.of(foundCv.get().getContactMe());}
-        else{return Optional.empty();}
+        return foundCv.map(CV::getContactMe);
     }
 
     @PostMapping("{id}/contactme/update")
