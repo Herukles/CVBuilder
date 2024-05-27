@@ -22,16 +22,13 @@ public class WebController {
 
     private final CVController cvController;
     private final PersonalInfoController personalInfoController;
-    private final CVGenerator cvGenerator;
+
     private Long cvId;
-    FileDownloadController fileDownloadController;
 
     @Autowired
-    public WebController(CVController cvController, PersonalInfoController personalInfoController, CVGenerator cvGenerator, FileDownloadController fileDownloadController) {
+    public WebController(CVController cvController, PersonalInfoController personalInfoController) {
         this.cvController = cvController;
         this.personalInfoController = personalInfoController;
-        this.cvGenerator = cvGenerator;
-        this.fileDownloadController = fileDownloadController;
     }
 
     @GetMapping(path = "/home")
@@ -85,17 +82,16 @@ public class WebController {
         return "experience";
     }
 
-//    @GetMapping(path = "/home/submit")
-//    public String submitProvidedData(Model model) {
-//
-//    }
-
-    @GetMapping(path="/home/generate")
-    public String generateCV() throws DocumentException, FileNotFoundException {
-        Document cvDocument = cvGenerator.generatePDF();
-
+    @GetMapping(path="/home/generateCV")
+    public String generateCV(Model model) {
+        ResponseEntity<Optional<CV>> cv = cvController.getCVbyId(this.cvId);
+        Optional<CV> cv1 = cv.getBody();
+        model.addAttribute("CV", cv1);
         return "generateCV";
     }
+
+
+
 }
 
 

@@ -27,7 +27,6 @@ public class PersonalInfoController {
     public PersonalInfoController(CVServiceImpl cvService, PersonalServiceImpl personalService) {
         this.cvService = cvService;
         this.personalService = personalService;
-
     }
 
     @GetMapping(path = "{id}/personal")
