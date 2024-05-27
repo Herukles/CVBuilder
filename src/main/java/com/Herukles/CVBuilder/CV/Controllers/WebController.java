@@ -4,17 +4,23 @@ import com.Herukles.CVBuilder.CV.CVGenerator;
 import com.Herukles.CVBuilder.CV.Models.*;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import org.asynchttpclient.AsyncHttpClient;
-import org.asynchttpclient.Dsl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -23,12 +29,15 @@ public class WebController {
     private final CVController cvController;
     private final PersonalInfoController personalInfoController;
 
+    private final CVGenerator cvGenerator;
+
     private Long cvId;
 
     @Autowired
-    public WebController(CVController cvController, PersonalInfoController personalInfoController) {
+    public WebController(CVController cvController, PersonalInfoController personalInfoController, CVGenerator cvGenerator) {
         this.cvController = cvController;
         this.personalInfoController = personalInfoController;
+        this.cvGenerator = cvGenerator;
     }
 
     @GetMapping(path = "/home")
@@ -83,11 +92,25 @@ public class WebController {
     }
 
     @GetMapping(path="/home/generateCV")
-    public String generateCV(Model model) {
+    public String generateCV(Model model) throws DocumentException, FileNotFoundException {
         ResponseEntity<Optional<CV>> cv = cvController.getCVbyId(this.cvId);
         Optional<CV> cv1 = cv.getBody();
         model.addAttribute("CV", cv1);
         return "generateCV";
+    }
+
+    @PostMapping("/home/download-resume")
+    public ResponseEntity<byte[]> exportPDF(@RequestBody QueryRequest request) throws IOException, DocumentException {
+        List<Map<String, Object>> queryResults = (List<Map<String, Object>>) cvController.getCVbyId(cvId);
+
+        ByteArrayOutputStream pdfStream = CVGenerator.generatePDF(queryResults);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=query_results.pdf");
+        headers.setContentLength(pdfStream.size());
+
+        return new ResponseEntity<>(pdfStream.toByteArray(), headers, HttpStatus.OK);
     }
 
 
