@@ -100,7 +100,7 @@ public class WebController {
     }
 
     @PostMapping("/home/download-resume")
-    public ResponseEntity<byte[]> exportPDF(@RequestBody QueryRequest request) throws IOException, DocumentException {
+    public ResponseEntity<byte[]> exportPDF(@RequestBody CV request) throws IOException, DocumentException {
         List<Map<String, Object>> queryResults = (List<Map<String, Object>>) cvController.getCVbyId(cvId);
 
         ByteArrayOutputStream pdfStream = CVGenerator.generatePDF(queryResults);
